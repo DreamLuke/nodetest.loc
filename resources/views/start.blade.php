@@ -5,4 +5,5 @@
 <div id="app">
     <example-component></example-component>
     <prop-component v-bind:urldata="{{ json_encode($url_data) }}"></prop-component>
+    <ajax-component></ajax-component>
 </div>

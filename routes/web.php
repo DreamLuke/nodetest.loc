@@ -24,3 +24,7 @@ Route::get('/test', function () {
 });
 
 Route::get('/start', 'StartController@index')->name('start');
+Route::get('/start/get-json', 'StartController@getJson')->name('start.get-json');
+
+
+
