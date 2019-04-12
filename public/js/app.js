@@ -1948,14 +1948,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       balance: 70,
-      urldata: [] //urldata: [],
-      //is_refresh: false,
-      //id: 0
-
+      urldata: [],
+      newTitle: '',
+      newPrice: 0
     };
   },
   mounted: function mounted() {
@@ -1990,6 +1994,24 @@ __webpack_require__.r(__webpack_exports__);
         this.balance += parseInt(url.price);
         url.number--;
       }
+    },
+    addPosition: function addPosition() {
+      //console.log(this.urldata[this.urldata.length - 1]);
+      if (this.price == '') {
+        this.price = 0; // alert('Проверка');
+      } //var arr = {'title':this.newTitle, 'number':0, 'price':this.newPrice};
+      // console.log(arr);
+
+
+      this.urldata.push({
+        'title': this.newTitle,
+        'number': 0,
+        'price': this.newPrice
+      });
+      console.log(this.urldata[this.urldata.length - 1].title);
+      console.log(this.urldata[this.urldata.length - 1].number);
+      console.log(this.urldata[this.urldata.length - 1].price); //this.newTitle = '';
+      //this.newPrice = '';
     }
   }
 });
@@ -37304,6 +37326,72 @@ var render = function() {
             0
           )
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("label", { attrs: { for: "title" } }, [
+          _vm._v("Наименование позиции")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newTitle,
+              expression: "newTitle"
+            }
+          ],
+          attrs: {
+            type: "text",
+            name: "title",
+            id: "title",
+            placeholder: "Новая позиция"
+          },
+          domProps: { value: _vm.newTitle },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newTitle = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "price" } }, [_vm._v("Цена за штуку")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newPrice,
+              expression: "newPrice"
+            }
+          ],
+          attrs: {
+            type: "number",
+            name: "price",
+            min: "0",
+            id: "price",
+            placeholder: "Цена за штуку"
+          },
+          domProps: { value: _vm.newPrice },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newPrice = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "submit", value: "Добавить" },
+          on: { click: _vm.addPosition }
+        })
       ])
     ])
   ])

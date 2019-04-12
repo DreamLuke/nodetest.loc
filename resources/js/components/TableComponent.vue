@@ -18,7 +18,7 @@
                             <th>{{ url.title }}</th>
                             <th>{{ url.number }}</th>
                             <th>{{ url.price }}</th>
-                            <th>{{ url.number * url.price }}</th>
+                            <th>{{ url.number*url.price }}</th>
                             <th>
                                 <button v-on:click="add(url)" class="btn btn-default text mb-1">+</button>
                                 <button v-on:click="subtract(url)" class="btn btn-default text mb-1">-</button>
@@ -27,8 +27,13 @@
                         </tr>
                     </tbody>
                 </table>
-
-
+            </div>
+            <div class="col-md-12">
+                <label for="title">Наименование позиции</label>
+                <input type="text" name="title" id="title" placeholder="Новая позиция" v-model="newTitle">
+                <label for="price">Цена за штуку</label>
+                <input type="number" name="price" min="0" id="price" placeholder="Цена за штуку" v-model="newPrice">
+                <input type="submit" v-on:click="addPosition" value="Добавить">
             </div>
         </div>
     </div>
@@ -41,9 +46,8 @@
                 balance: 70,
                 urldata: [],
 
-                //urldata: [],
-                //is_refresh: false,
-                //id: 0
+                newTitle: '',
+                newPrice: 0,
             }
         },
         mounted() {
@@ -83,7 +87,24 @@
                 }
             },
 
+            addPosition: function () {
+                //console.log(this.urldata[this.urldata.length - 1]);
+                if(this.price == '') {
+                    this.price = 0;
+                    // alert('Проверка');
+                }
 
+                //var arr = {'title':this.newTitle, 'number':0, 'price':this.newPrice};
+                // console.log(arr);
+                this.urldata.push({'title':this.newTitle, 'number':0, 'price':this.newPrice});
+
+                console.log(this.urldata[this.urldata.length - 1].title);
+                console.log(this.urldata[this.urldata.length - 1].number);
+                console.log(this.urldata[this.urldata.length - 1].price);
+
+                //this.newTitle = '';
+                //this.newPrice = '';
+            },
 
 
         }
