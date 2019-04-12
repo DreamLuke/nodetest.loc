@@ -1947,6 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1968,11 +1969,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/table/get-json').then(function (response) {
         // console.log(this.balance);
+        //console.log(this.urldata[0].title);
         _this.urldata = response.data;
-        console.log(_this.urldata[0].title);
-        console.log(_this.urldata[0].price);
-        console.log(_this.urldata[1].title);
-        console.log(_this.urldata[2].title);
       });
     },
     add: function add(url) {
@@ -1983,6 +1981,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     subtract: function subtract(url) {
       if (url.number > 0) {
+        this.balance += parseInt(url.price);
+        url.number--;
+      }
+    },
+    reset: function reset(url) {
+      while (url.number > 0) {
         this.balance += parseInt(url.price);
         url.number--;
       }
@@ -37280,6 +37284,19 @@ var render = function() {
                       }
                     },
                     [_vm._v("-")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default text mb-1",
+                      on: {
+                        click: function($event) {
+                          return _vm.reset(url)
+                        }
+                      }
+                    },
+                    [_vm._v("x")]
                   )
                 ])
               ])

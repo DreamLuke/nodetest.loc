@@ -22,6 +22,7 @@
                             <th>
                                 <button v-on:click="add(url)" class="btn btn-default text mb-1">+</button>
                                 <button v-on:click="subtract(url)" class="btn btn-default text mb-1">-</button>
+                                <button v-on:click="reset(url)" class="btn btn-default text mb-1">x</button>
                             </th>
                         </tr>
                     </tbody>
@@ -47,7 +48,6 @@
         },
         mounted() {
             this.init();
-
             console.log('Component mounted.');
             // alert('медвед');
             // this.update()
@@ -56,12 +56,9 @@
             init: function () {
                 axios.get('/table/get-json').then((response) => {
                     // console.log(this.balance);
-                    this.urldata = response.data;
+                    //console.log(this.urldata[0].title);
 
-                    console.log(this.urldata[0].title);
-                    console.log(this.urldata[0].price);
-                    console.log(this.urldata[1].title);
-                    console.log(this.urldata[2].title);
+                    this.urldata = response.data;
                 });
             },
 
@@ -77,7 +74,16 @@
                     this.balance += parseInt(url.price);
                     url.number--;
                 }
-            }
+            },
+
+            reset: function (url) {
+                while(url.number > 0) {
+                    this.balance += parseInt(url.price);
+                    url.number--;
+                }
+            },
+
+
 
 
         }
