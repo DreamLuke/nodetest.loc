@@ -2,14 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <button v-on:click="update" class="btn btn-default text mb-1" v-if="!is_refresh">Обновить - {{id}}...</button>
-                <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление...</span>
-                <h2>Остаток</h2>
+                <span>Остаток: {{ balance }} грн.</span>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Наименование</th>
                             <th>Количество</th>
+                            <th>Цена за единицу продукции</th>
                             <th>Цена</th>
                             <th>Действие</th>
                         </tr>
@@ -19,7 +18,8 @@
                         <th>Поозиция 1</th>
                         <th>1</th>
                         <th>10</th>
-                        <th>+++</th>
+                        <th>10</th>
+                        <th><button v-on:click="add" class="btn btn-default text mb-1">+</button></th>
                     </tr>
                     </tbody>
                 </table>
@@ -34,27 +34,32 @@
     export default {
         data: function () {
             return {
-                urldata: [],
-                is_refresh: false,
-                id: 0
+                balance: 70,
+                //urldata: [],
+                //is_refresh: false,
+                //id: 0
             }
         },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted.');
             // alert('медвед');
             // this.update()
         },
         methods: {
-            update: function () {
+            add: function () {
+                this.balance -= 10;
 
-                this.is_refresh = true ;
+                if(this.balance <= 0) {
+                    this.balance = 0;
+                }
+
+                /*this.is_refresh = true ;
                 axios.get('/start/get-json').then((response) => {
                     console.log(response);
-                    this.urldata = response.data;
-                    this.is_refresh = false;
-                    this.id++;
-                });
-
+                    // this.urldata = response.data;
+                    // this.is_refresh = false;
+                    this.balance -= 10;
+                });*/
             }
         }
     }

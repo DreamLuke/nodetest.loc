@@ -25,7 +25,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('prop-component', require('./components/PropComponent.vue').default);
 Vue.component('ajax-component', require('./components/AjaxComponent.vue').default);
 
-/* Vue сделанные для выполнения задания */
+/* Компоненты Vue сделанные для выполнения задания */
 Vue.component('table-component', require('./components/TableComponent.vue').default);
 
 /**

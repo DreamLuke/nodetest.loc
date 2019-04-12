@@ -10,4 +10,18 @@ class TableController extends Controller
     {
         return view('table');
     }
+
+    /*public function subtractFromBalance()
+    {
+        return [
+            array(
+                'title' => 'Google',
+                'url' => 'https://google.com'
+            ),
+            array(
+                'title' => 'Yandex',
+                'url' => 'http://ya.ru'
+            ),
+        ];
+    }*/
 }

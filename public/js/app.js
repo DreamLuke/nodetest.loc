@@ -1947,9 +1947,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      urldata: [],
-      is_refresh: false,
-      id: 0
+      balance: 70 //urldata: [],
+      //is_refresh: false,
+      //id: 0
+
     };
   },
   mounted: function mounted() {
@@ -1957,16 +1958,20 @@ __webpack_require__.r(__webpack_exports__);
     // this.update()
   },
   methods: {
-    update: function update() {
-      var _this = this;
+    add: function add() {
+      this.balance -= 10;
 
-      this.is_refresh = true;
-      axios.get('/start/get-json').then(function (response) {
-        console.log(response);
-        _this.urldata = response.data;
-        _this.is_refresh = false;
-        _this.id++;
-      });
+      if (this.balance <= 0) {
+        this.balance = 0;
+      }
+      /*this.is_refresh = true ;
+      axios.get('/start/get-json').then((response) => {
+          console.log(response);
+          // this.urldata = response.data;
+          // this.is_refresh = false;
+          this.balance -= 10;
+      });*/
+
     }
   }
 });
@@ -37219,26 +37224,34 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        !_vm.is_refresh
-          ? _c(
-              "button",
-              {
-                staticClass: "btn btn-default text mb-1",
-                on: { click: _vm.update }
-              },
-              [_vm._v("Обновить - " + _vm._s(_vm.id) + "...")]
-            )
-          : _vm._e(),
+        _c("span", [_vm._v("Остаток: " + _vm._s(_vm.balance) + " грн.")]),
         _vm._v(" "),
-        _vm.is_refresh
-          ? _c("span", { staticClass: "badge badge-primary mb-1" }, [
-              _vm._v("Обновление...")
+        _c("table", { staticClass: "table" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("th", [_vm._v("Поозиция 1")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("1")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("10")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("10")]),
+              _vm._v(" "),
+              _c("th", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default text mb-1",
+                    on: { click: _vm.add }
+                  },
+                  [_vm._v("+")]
+                )
+              ])
             ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("h2", [_vm._v("Остаток")]),
-        _vm._v(" "),
-        _vm._m(0)
+          ])
+        ])
       ])
     ])
   ])
@@ -37248,29 +37261,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table" }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [_vm._v("Наименование")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Количество")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Цена")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Действие")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("th", [_vm._v("Поозиция 1")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("1")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("10")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("+++")])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Наименование")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Количество")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Цена за единицу продукции")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Цена")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Действие")])
       ])
     ])
   }
@@ -49447,7 +49448,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('prop-component', __webpack_require__(/*! ./components/PropComponent.vue */ "./resources/js/components/PropComponent.vue")["default"]);
 Vue.component('ajax-component', __webpack_require__(/*! ./components/AjaxComponent.vue */ "./resources/js/components/AjaxComponent.vue")["default"]);
-/* Vue сделанные для выполнения задания */
+/* Компоненты Vue сделанные для выполнения задания */
 
 Vue.component('table-component', __webpack_require__(/*! ./components/TableComponent.vue */ "./resources/js/components/TableComponent.vue")["default"]);
 /**
