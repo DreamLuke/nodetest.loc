@@ -19,7 +19,10 @@
                             <th>{{ url.number }}</th>
                             <th>{{ url.price }}</th>
                             <th>{{ url.number * url.price }}</th>
-                            <th><button v-on:click="add(url)" class="btn btn-default text mb-1">+</button></th>
+                            <th>
+                                <button v-on:click="add(url)" class="btn btn-default text mb-1">+</button>
+                                <button v-on:click="subtract(url)" class="btn btn-default text mb-1">-</button>
+                            </th>
                         </tr>
                     </tbody>
                 </table>
@@ -63,12 +66,17 @@
             },
 
             add: function (url) {
-
                 if(this.balance >= url.price) {
                     this.balance -= url.price;
                     url.number++;
                 }
+            },
 
+            subtract: function (url) {
+                if(url.number > 0) {
+                    this.balance += parseInt(url.price);
+                    url.number--;
+                }
             }
 
 

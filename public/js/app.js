@@ -1944,6 +1944,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1976,6 +1979,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.balance >= url.price) {
         this.balance -= url.price;
         url.number++;
+      }
+    },
+    subtract: function subtract(url) {
+      if (url.number > 0) {
+        this.balance += parseInt(url.price);
+        url.number--;
       }
     }
   }
@@ -37258,6 +37267,19 @@ var render = function() {
                       }
                     },
                     [_vm._v("+")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default text mb-1",
+                      on: {
+                        click: function($event) {
+                          return _vm.subtract(url)
+                        }
+                      }
+                    },
+                    [_vm._v("-")]
                   )
                 ])
               ])
