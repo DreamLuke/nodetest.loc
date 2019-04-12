@@ -35,17 +35,32 @@
         data: function () {
             return {
                 balance: 70,
+                urldata: [],
+
                 //urldata: [],
                 //is_refresh: false,
                 //id: 0
             }
         },
         mounted() {
+            this.init();
+
             console.log('Component mounted.');
             // alert('медвед');
             // this.update()
         },
         methods: {
+            init: function () {
+                axios.get('/table/get-json').then((response) => {
+                    // console.log(this.balance);
+                    this.urldata = response.data;
+                    console.log(this.urldata[0].title);
+                    console.log(this.urldata[1].title);
+                    console.log(this.urldata[2].title);
+                });
+            },
+
+
             add: function () {
                 this.balance -= 10;
 
@@ -53,12 +68,10 @@
                     this.balance = 0;
                 }
 
-                /*this.is_refresh = true ;
-                axios.get('/start/get-json').then((response) => {
-                    console.log(response);
-                    // this.urldata = response.data;
-                    // this.is_refresh = false;
-                    this.balance -= 10;
+                /*axios.get('/table/get-json').then((response) => {
+                    // console.log(this.balance);
+                    this.urldata = response.data;
+                    console.log(this.urldata[0].title);
                 });*/
             }
         }

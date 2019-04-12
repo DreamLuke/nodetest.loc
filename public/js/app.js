@@ -1947,29 +1947,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      balance: 70 //urldata: [],
+      balance: 70,
+      urldata: [] //urldata: [],
       //is_refresh: false,
       //id: 0
 
     };
   },
   mounted: function mounted() {
+    this.init();
     console.log('Component mounted.'); // alert('медвед');
     // this.update()
   },
   methods: {
+    init: function init() {
+      var _this = this;
+
+      axios.get('/table/get-json').then(function (response) {
+        // console.log(this.balance);
+        _this.urldata = response.data;
+        console.log(_this.urldata[0].title);
+        console.log(_this.urldata[1].title);
+        console.log(_this.urldata[2].title);
+      });
+    },
     add: function add() {
       this.balance -= 10;
 
       if (this.balance <= 0) {
         this.balance = 0;
       }
-      /*this.is_refresh = true ;
-      axios.get('/start/get-json').then((response) => {
-          console.log(response);
-          // this.urldata = response.data;
-          // this.is_refresh = false;
-          this.balance -= 10;
+      /*axios.get('/table/get-json').then((response) => {
+          // console.log(this.balance);
+          this.urldata = response.data;
+          console.log(this.urldata[0].title);
       });*/
 
     }

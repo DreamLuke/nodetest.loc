@@ -11,17 +11,24 @@ class TableController extends Controller
         return view('table');
     }
 
-    /*public function subtractFromBalance()
+    public function getJson()
     {
         return [
             array(
-                'title' => 'Google',
-                'url' => 'https://google.com'
+                'title' => 'Позиция 1',
+                'number' => 0,
+                'price' => 10
             ),
             array(
-                'title' => 'Yandex',
-                'url' => 'http://ya.ru'
+                'title' => 'Позиция 2',
+                'number' => 0,
+                'price' => 20
+            ),
+            array(
+                'title' => 'Позиция 3',
+                'number' => 0,
+                'price' => 30
             ),
         ];
-    }*/
+    }
 }
