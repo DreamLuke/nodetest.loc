@@ -1972,20 +1972,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this.urldata[2].title);
       });
     },
-    add: function add(price) {
-      if (this.balance >= price) {
-        this.balance -= price;
+    add: function add(url) {
+      if (this.balance >= url.price) {
+        this.balance -= url.price;
+        url.number++;
       }
-      /*else if(this.balance == this.urldata[0].price) {
-          this.balance = 0;
-      }*/
-
-      /*axios.get('/table/get-json').then((response) => {
-          // console.log(this.balance);
-          this.urldata = response.data;
-          console.log(this.urldata[0].title);
-      });*/
-
     }
   }
 });
@@ -37262,7 +37253,7 @@ var render = function() {
                       staticClass: "btn btn-default text mb-1",
                       on: {
                         click: function($event) {
-                          return _vm.add(url.price)
+                          return _vm.add(url)
                         }
                       }
                     },

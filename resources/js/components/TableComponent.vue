@@ -19,7 +19,7 @@
                             <th>{{ url.number }}</th>
                             <th>{{ url.price }}</th>
                             <th>{{ url.number * url.price }}</th>
-                            <th><button v-on:click="add(url.price)" class="btn btn-default text mb-1">+</button></th>
+                            <th><button v-on:click="add(url)" class="btn btn-default text mb-1">+</button></th>
                         </tr>
                     </tbody>
                 </table>
@@ -57,30 +57,21 @@
 
                     console.log(this.urldata[0].title);
                     console.log(this.urldata[0].price);
-
                     console.log(this.urldata[1].title);
                     console.log(this.urldata[2].title);
                 });
             },
 
+            add: function (url) {
 
-            add: function (price) {
-
-                if(this.balance >= price) {
-                    this.balance -= price;
+                if(this.balance >= url.price) {
+                    this.balance -= url.price;
+                    url.number++;
                 }
 
-
-                /*else if(this.balance == this.urldata[0].price) {
-                    this.balance = 0;
-                }*/
-
-                /*axios.get('/table/get-json').then((response) => {
-                    // console.log(this.balance);
-                    this.urldata = response.data;
-                    console.log(this.urldata[0].title);
-                });*/
             }
+
+
         }
     }
 </script>
