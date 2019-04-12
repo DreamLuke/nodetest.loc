@@ -20,9 +20,13 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+/* Стандартный компонент Vue по умолчанию и Vue сделанные на основе примеров */
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('prop-component', require('./components/PropComponent.vue').default);
 Vue.component('ajax-component', require('./components/AjaxComponent.vue').default);
+
+/* Vue сделанные для выполнения задания */
+Vue.component('table-component', require('./components/TableComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

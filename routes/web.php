@@ -23,8 +23,9 @@ Route::get('/test', function () {
     return view('test');
 });
 
+// Роуты сделанные для выполнения примеров
 Route::get('/start', 'StartController@index')->name('start');
 Route::get('/start/get-json', 'StartController@getJson')->name('start.get-json');
 
-
-
+// Роуты сделанные для выполнения задания
+Route::get('/table', 'StartController@index')->name('start');
