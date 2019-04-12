@@ -19,7 +19,7 @@
                         <th>1</th>
                         <th>10</th>
                         <th>10</th>
-                        <th><button v-on:click="add" class="btn btn-default text mb-1">+</button></th>
+                        <th><button v-on:click="add(0)" class="btn btn-default text mb-1">+</button></th>
                     </tr>
                     </tbody>
                 </table>
@@ -55,18 +55,24 @@
                     // console.log(this.balance);
                     this.urldata = response.data;
                     console.log(this.urldata[0].title);
+                    console.log(this.urldata[0].price);
+
                     console.log(this.urldata[1].title);
                     console.log(this.urldata[2].title);
                 });
             },
 
 
-            add: function () {
-                this.balance -= 10;
+            add: function (pos) {
 
-                if(this.balance <= 0) {
-                    this.balance = 0;
+                if(this.balance >= this.urldata[pos].price) {
+                    this.balance -= this.urldata[pos].price;
                 }
+
+
+                /*else if(this.balance == this.urldata[0].price) {
+                    this.balance = 0;
+                }*/
 
                 /*axios.get('/table/get-json').then((response) => {
                     // console.log(this.balance);

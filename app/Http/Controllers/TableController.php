@@ -16,18 +16,18 @@ class TableController extends Controller
         return [
             array(
                 'title' => 'Позиция 1',
-                'number' => 0,
-                'price' => 10
+                'number' => '0',
+                'price' => '10',
             ),
             array(
                 'title' => 'Позиция 2',
-                'number' => 0,
-                'price' => 20
+                'number' => '0',
+                'price' => '20',
             ),
             array(
                 'title' => 'Позиция 3',
-                'number' => 0,
-                'price' => 30
+                'number' => '0',
+                'price' => '30',
             ),
         ];
     }

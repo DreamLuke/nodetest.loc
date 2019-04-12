@@ -1967,16 +1967,19 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(this.balance);
         _this.urldata = response.data;
         console.log(_this.urldata[0].title);
+        console.log(_this.urldata[0].price);
         console.log(_this.urldata[1].title);
         console.log(_this.urldata[2].title);
       });
     },
-    add: function add() {
-      this.balance -= 10;
-
-      if (this.balance <= 0) {
-        this.balance = 0;
+    add: function add(pos) {
+      if (this.balance >= this.urldata[pos].price) {
+        this.balance -= this.urldata[pos].price;
       }
+      /*else if(this.balance == this.urldata[0].price) {
+          this.balance = 0;
+      }*/
+
       /*axios.get('/table/get-json').then((response) => {
           // console.log(this.balance);
           this.urldata = response.data;
@@ -37255,7 +37258,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-default text mb-1",
-                    on: { click: _vm.add }
+                    on: {
+                      click: function($event) {
+                        return _vm.add(0)
+                      }
+                    }
                   },
                   [_vm._v("+")]
                 )
