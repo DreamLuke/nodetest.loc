@@ -14,13 +14,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>Поозиция 1</th>
-                        <th>1</th>
-                        <th>10</th>
-                        <th>10</th>
-                        <th><button v-on:click="add(0)" class="btn btn-default text mb-1">+</button></th>
-                    </tr>
+                        <tr v-for="url in urldata">
+                            <th>{{ url.title }}</th>
+                            <th>{{ url.number }}</th>
+                            <th>{{ url.price }}</th>
+                            <th>{{ url.number * url.price }}</th>
+                            <th><button v-on:click="add(url.price)" class="btn btn-default text mb-1">+</button></th>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -54,6 +54,7 @@
                 axios.get('/table/get-json').then((response) => {
                     // console.log(this.balance);
                     this.urldata = response.data;
+
                     console.log(this.urldata[0].title);
                     console.log(this.urldata[0].price);
 
@@ -63,10 +64,10 @@
             },
 
 
-            add: function (pos) {
+            add: function (price) {
 
-                if(this.balance >= this.urldata[pos].price) {
-                    this.balance -= this.urldata[pos].price;
+                if(this.balance >= price) {
+                    this.balance -= price;
                 }
 
 

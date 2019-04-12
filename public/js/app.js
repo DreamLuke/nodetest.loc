@@ -1972,9 +1972,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this.urldata[2].title);
       });
     },
-    add: function add(pos) {
-      if (this.balance >= this.urldata[pos].price) {
-        this.balance -= this.urldata[pos].price;
+    add: function add(price) {
+      if (this.balance >= price) {
+        this.balance -= price;
       }
       /*else if(this.balance == this.urldata[0].price) {
           this.balance = 0;
@@ -37243,32 +37243,36 @@ var render = function() {
         _c("table", { staticClass: "table" }, [
           _vm._m(0),
           _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("th", [_vm._v("Поозиция 1")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("1")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("10")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("10")]),
-              _vm._v(" "),
-              _c("th", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default text mb-1",
-                    on: {
-                      click: function($event) {
-                        return _vm.add(0)
+          _c(
+            "tbody",
+            _vm._l(_vm.urldata, function(url) {
+              return _c("tr", [
+                _c("th", [_vm._v(_vm._s(url.title))]),
+                _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(url.number))]),
+                _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(url.price))]),
+                _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(url.number * url.price))]),
+                _vm._v(" "),
+                _c("th", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default text mb-1",
+                      on: {
+                        click: function($event) {
+                          return _vm.add(url.price)
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("+")]
-                )
+                    },
+                    [_vm._v("+")]
+                  )
+                ])
               ])
-            ])
-          ])
+            }),
+            0
+          )
         ])
       ])
     ])
