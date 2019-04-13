@@ -10,10 +10,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 //var Vue = require('vue');
-const VueRouter = require('vue-router').default;
-
-var Main = require('./components/MainComponent.vue').default;
-var Table = require('./components/TableComponent.vue').default;
+//const VueRouter = require('vue-router').default;
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use( VueRouter );
 
@@ -37,6 +36,9 @@ Vue.component('ajax-component', require('./components/AjaxComponent.vue').defaul
 Vue.component('layout', require('./components/Layout.vue').default);
 Vue.component('main-component', require('./components/MainComponent.vue').default);
 Vue.component('table-component', require('./components/TableComponent.vue').default);
+
+var Main = require('./components/MainComponent.vue').default;
+var Table = require('./components/TableComponent.vue').default;
 
 var router = new VueRouter({
     routes: [
