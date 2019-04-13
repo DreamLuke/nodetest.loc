@@ -9,6 +9,14 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+//var Vue = require('vue');
+const VueRouter = require('vue-router').default;
+
+var Main = require('./components/MainComponent.vue').default;
+var Table = require('./components/TableComponent.vue').default;
+
+Vue.use( VueRouter );
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -26,7 +34,16 @@ Vue.component('prop-component', require('./components/PropComponent.vue').defaul
 Vue.component('ajax-component', require('./components/AjaxComponent.vue').default);
 
 /* Компоненты Vue сделанные для выполнения задания */
+Vue.component('layout', require('./components/Layout.vue').default);
+Vue.component('main-component', require('./components/MainComponent.vue').default);
 Vue.component('table-component', require('./components/TableComponent.vue').default);
+
+var router = new VueRouter({
+    routes: [
+        { path: '/', component: Main },
+        { path: '/table', component: Table }
+    ]
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -35,5 +52,6 @@ Vue.component('table-component', require('./components/TableComponent.vue').defa
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router: router
 });
