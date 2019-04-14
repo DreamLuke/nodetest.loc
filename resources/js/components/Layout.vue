@@ -12,11 +12,15 @@
                     <li>
                         <router-link to="/table">Таблица</router-link>
                     </li>
+                    <li>
+                        <router-link to="/add-table-row">Добавить позицию</router-link>
+                    </li>
                 </ul>
                 <div class="col-md-10">
-                    <router-view title="Главная страница сайта"></router-view>
+                    <router-view title="Главная страница сайта" v-bind:urldata="urldata" @addPosition="addPositionToArray"></router-view>
                 </div>
             </div>
+            {{this.people}}
         </section>
         <footer>
             Футер )
@@ -26,7 +30,28 @@
 
 <script>
     export default {
-        props: ['header']
+        data: function () {
+            return {
+                urldata: [
+                    {'title':'Позиция 1', 'number':0, 'price':10},
+                    {'title':'Позиция 2', 'number':0, 'price':20},
+                    {'title':'Позиция 3', 'number':0, 'price':30},
+                ],
+                people: ['111', '222', ],
+
+                newTitle: '',
+                newPrice: '',
+            }
+        },
+        props: ['header'],
+        methods: {
+            addPositionToArray: function (arr) {
+                // console.log(this.message)
+                // this.people.push(arr);
+                this.urldata.push(arr);
+            },
+        },
+
     }
 </script>
 

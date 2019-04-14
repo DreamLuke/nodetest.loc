@@ -34,17 +34,20 @@ Vue.component('ajax-component', require('./components/AjaxComponent.vue').defaul
 
 /* Компоненты Vue сделанные для выполнения задания */
 Vue.component('layout', require('./components/Layout.vue').default);
-Vue.component('main-component', require('./components/MainComponent.vue').default);
+Vue.component('main-component', require('./components/MainPageComponent.vue').default);
 Vue.component('table-component', require('./components/TableComponent.vue').default);
+Vue.component('add-table-row-component', require('./components/AddTableRowComponent.vue').default);
 
-var Main = require('./components/MainComponent.vue').default;
+var Main = require('./components/MainPageComponent.vue').default;
 var Table = require('./components/TableComponent.vue').default;
+var AddTableRow = require('./components/AddTableRowComponent.vue').default;
 
 
 var router = new VueRouter({
     routes: [
         { path: '/', component: Main },
-        { path: '/table', component: Table }
+        { path: '/table', component: Table },
+        { path: '/add-table-row', component: AddTableRow },
     ]
 })
 

@@ -3,7 +3,6 @@
         <div class="row">
             <div class="col-md-12">
                 <span>Остаток: {{ balance }} грн.</span>
-                {{title}}
                 <table class="table">
                     <thead>
                         <tr>
@@ -45,31 +44,24 @@
         data: function () {
             return {
                 balance: 70,
-                urldata: [
+                /*urldata: [
                     {'title':'Позиция 1', 'number':0, 'price':10},
                     {'title':'Позиция 2', 'number':0, 'price':20},
                     {'title':'Позиция 3', 'number':0, 'price':30},
-                ],
+                ],*/
 
                 newTitle: '',
                 newPrice: '',
             }
         },
+        props: ['people', 'urldata'],
         mounted() {
-            this.init();
+            //this.init();
             console.log('Component mounted.');
             // alert('медвед');
             // this.update()
         },
         methods: {
-            init: function () {
-                axios.get('/table/get-json').then((response) => {
-                    // console.log(this.balance);
-                    //console.log(this.urldata[0].title);
-
-                    this.urldata = response.data;
-                });
-            },
 
             add: function (url) {
                 if(this.balance >= url.price) {
@@ -106,10 +98,6 @@
                 //var arr = {'title':this.newTitle, 'number':0, 'price':this.newPrice};
                 // console.log(arr);
                 this.urldata.push({'title':this.newTitle, 'number':0, 'price':this.newPrice});
-
-                console.log(this.urldata[this.urldata.length - 1].title);
-                console.log(this.urldata[this.urldata.length - 1].number);
-                console.log(this.urldata[this.urldata.length - 1].price);
 
                 this.newTitle = '';
                 this.newPrice = '';
