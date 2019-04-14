@@ -6,8 +6,14 @@
         <section>
             <div class="row">
                 <div class="col-md-2 side__bar">
-                    <router-link to="/">Главная страница</router-link>
-                    <router-link to="/table">Таблица</router-link>
+                    <ul>
+                        <li>
+                            <router-link to="/">Главная страница</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/table">Таблица</router-link>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-md-10">
                     <router-view></router-view>
@@ -26,5 +32,12 @@
 <style>
     h1 {
         text-align: center;
+    }
+    ul {
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+    li {
+        list-style-type: none; /* Убираем маркеры */
     }
 </style>
