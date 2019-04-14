@@ -20,7 +20,6 @@
                     <router-view title="Главная страница сайта" v-bind:urldata="urldata" @addPosition="addPositionToArray"></router-view>
                 </div>
             </div>
-            {{this.people}}
         </section>
         <footer>
             Футер )

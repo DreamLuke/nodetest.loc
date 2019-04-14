@@ -10,6 +10,9 @@
 
                 <input type="submit" v-on:click="addPosition" value="Добавить">
             </div>
+            <div class="success">
+                {{success}}
+            </div>
 
         </div>
     </div>
@@ -21,8 +24,7 @@
             return {
                 newTitle: '',
                 newPrice: '',
-
-                message: '12345',
+                success: '',
             }
         },
         mounted() {
@@ -39,6 +41,9 @@
                     this.newPrice = 0;
                     // alert('Проверка');
                 }
+                if(this.newTitle == '' && this.newPrice == '') {
+                    this.success = '';
+                }
 
                 // console.log(this.message)
                 //this.$emit('message', this.message);
@@ -50,7 +55,16 @@
 
                 this.newTitle = '';
                 this.newPrice = '';
+
+                alert('Позиция успешно сохранена!');
             },
         },
     }
 </script>
+
+<style>
+    .success {
+        text-style: bold;
+        color: green;
+    }
+</style>
