@@ -5,16 +5,14 @@
         </header>
         <section>
             <div class="row">
-                <div class="col-md-2 side__bar">
-                    <ul>
-                        <li>
-                            <router-link to="/">Главная страница</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/table">Таблица</router-link>
-                        </li>
-                    </ul>
-                </div>
+                <ul>
+                    <li>
+                        <router-link to="/">Главная страница</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/table">Таблица</router-link>
+                    </li>
+                </ul>
                 <div class="col-md-10">
                     <router-view title="Главная страница сайта"></router-view>
                 </div>
@@ -33,14 +31,18 @@
 </script>
 
 <style>
+    .row {
+        margin: 0;
+    }
     h1 {
         text-align: center;
     }
     ul {
-        margin-left: 10px;
-        padding-left: 10px;
+        margin-left: 0;
+        padding-left: 0;
     }
     li {
         list-style-type: none; /* Убираем маркеры */
+        padding-left: 10px;
     }
 </style>

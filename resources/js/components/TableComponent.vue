@@ -61,7 +61,6 @@
             // alert('медвед');
             // this.update()
         },
-        props: ['title'],
         methods: {
             init: function () {
                 axios.get('/table/get-json').then((response) => {

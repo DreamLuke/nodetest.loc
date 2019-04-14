@@ -1888,8 +1888,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['header']
 });
@@ -2044,7 +2042,6 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Component mounted.'); // alert('медвед');
     // this.update()
   },
-  props: ['title'],
   methods: {
     init: function init() {
       var _this = this;
@@ -6558,7 +6555,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nh1 {\n    text-align: center;\n}\nul {\n    margin-left: 10px;\n    padding-left: 10px;\n}\nli {\n    list-style-type: none; /* Убираем маркеры */\n}\n", ""]);
+exports.push([module.i, "\n.row {\n    margin: 0;\n}\nh1 {\n    text-align: center;\n}\nul {\n    margin-left: 0;\n    padding-left: 0;\n}\nli {\n    list-style-type: none; /* Убираем маркеры */\n    padding-left: 10px;\n}\n", ""]);
 
 // exports
 
@@ -37937,28 +37934,26 @@ var render = function() {
     _vm._v(" "),
     _c("section", [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-2 side__bar" }, [
-          _c("ul", [
-            _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: "/" } }, [
-                  _vm._v("Главная страница")
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: "/table" } }, [
-                  _vm._v("Таблица")
-                ])
-              ],
-              1
-            )
-          ])
+        _c("ul", [
+          _c(
+            "li",
+            [
+              _c("router-link", { attrs: { to: "/" } }, [
+                _vm._v("Главная страница")
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            [
+              _c("router-link", { attrs: { to: "/table" } }, [
+                _vm._v("Таблица")
+              ])
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
         _c(
