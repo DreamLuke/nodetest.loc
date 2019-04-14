@@ -31,18 +31,27 @@
     export default {
         data: function () {
             return {
-                urldata: [
+                /*urldata: [
                     {'title':'Позиция 1', 'number':0, 'price':10},
                     {'title':'Позиция 2', 'number':0, 'price':20},
                     {'title':'Позиция 3', 'number':0, 'price':30},
-                ],
-                people: ['111', '222', ],
+                ],*/
+                // people: ['111', '222', ],
 
                 newTitle: '',
                 newPrice: '',
             }
         },
+        computed: {
+            urldata() {
+                return this.$store.state.urldata
+            }
+        },
         props: ['header'],
+        mounted() {
+            console.log('Component mounted.');
+            // console.log(store.state.count);
+        },
         methods: {
             addPositionToArray: function (arr) {
                 // console.log(this.message)

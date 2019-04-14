@@ -13,8 +13,105 @@ window.Vue = require('vue');
 //const VueRouter = require('vue-router').default;
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Vuex from 'vuex';
+
+import {mapGetters} from 'vuex';
 
 Vue.use( VueRouter );
+Vue.use( Vuex );
+
+/*const store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    mutations: {
+        increment(state) {
+            state.count++
+        }
+    }
+});*/
+
+const store = new Vuex.Store({
+    state: {
+        balance: 75,
+        count: 0,
+        urldata: [
+            {'title':'Позиция 1', 'number':0, 'price':10},
+            {'title':'Позиция 2', 'number':0, 'price':20},
+            {'title':'Позиция 3', 'number':0, 'price':30},
+        ],
+
+        newTitle: '',
+        newPrice: '',
+    },
+    mutations: {
+        ADD(state, price) {
+            state.balance -= price
+        },
+
+        SUBTRACT(state, price) {
+            state.balance += price
+        },
+
+        RESET(state, price) {
+            state.balance += price
+        },
+
+    },
+    actions: {
+        add({state, dispatch, commit}, index) {
+            // store.commit('ADD', state.urldata[index].price);
+            if(state.balance >= state.urldata[index].price) {
+                // state.balance -= state.urldata[index].price;
+                store.commit('ADD', state.urldata[index].price);
+                state.urldata[index].number++;
+            }
+        },
+        subtract({state, dispatch, commit}, index) {
+            if(state.urldata[index].number > 0) {
+                // state.balance -= state.urldata[index].price;
+                store.commit('SUBTRACT', state.urldata[index].price);
+                state.urldata[index].number--;
+            }
+        },
+        reset({state, dispatch, commit}, index) {
+            while(state.urldata[index].number > 0) {
+                store.commit('RESET', state.urldata[index].price);
+                state.urldata[index].number--;
+            }
+        },
+
+        addPosition({state, dispatch, commit}) {
+            if(state.newTitle == '') {
+                state.newTitle = 'Новая позиция';
+                // alert('Проверка');
+            }
+            if(state.newPrice == '') {
+                state.newPrice = 0;
+                // alert('Проверка');
+            }
+            var arr = {'title':state.newTitle, 'number':0, 'price':state.newPrice};
+            state.urldata.push(arr);
+
+            // this.$emit('addPosition', this.newTitle);
+            //this.$emit('addPosition', arr);
+
+            state.newTitle = '';
+            state.newPrice = '';
+
+            alert('Позиция успешно сохранена!');
+        },
+    },
+    getters: {
+        tasks (state) {
+            return state.count;
+        }
+    }
+})
+
+// store.commit('add');
+// console.log(store.state.count);
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -59,5 +156,8 @@ var router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router: router
+    store,
+    router: router,
+    methods: {
+    }
 });

@@ -22,17 +22,25 @@
     export default {
         data: function () {
             return {
-                newTitle: '',
-                newPrice: '',
+                // newTitle: '',
+                // newPrice: '',
                 success: '',
             }
+        },
+        computed: {
+            newTitle() {
+                return this.$store.state.newTitle
+            },
+            newPrice() {
+                return this.$store.state.newPrice
+            },
         },
         mounted() {
             console.log('Component mounted. AddTableComponent.');
         },
         methods: {
             //saveMessage: function () {
-            addPosition: function () {
+            /*addPosition: function () {
                 if(this.newTitle == '') {
                     this.newTitle = 'Новая позиция';
                     // alert('Проверка');
@@ -57,6 +65,9 @@
                 this.newPrice = '';
 
                 alert('Позиция успешно сохранена!');
+            },*/
+            addPosition: function () {
+                this.$store.dispatch('addPosition');
             },
         },
     }
