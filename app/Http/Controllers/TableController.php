@@ -11,7 +11,7 @@ class TableController extends Controller
         return view('table');
     }
 
-    public function getJson()
+    /*public function getJson()
     {
         return [
             array(
@@ -30,5 +30,5 @@ class TableController extends Controller
                 'price' => '30',
             ),
         ];
-    }
+    }*/
 }

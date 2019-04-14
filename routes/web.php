@@ -28,5 +28,5 @@ Route::get('/start', 'StartController@index')->name('start');
 Route::get('/start/get-json', 'StartController@getJson')->name('start.get-json');
 
 // Роуты сделанные для выполнения задания
-Route::get('/table', 'TableController@index')->name('table');
-Route::get('/table/get-json', 'TableController@getJson')->name('table.get-json');
+// Route::get('/table', 'TableController@index')->name('table');
+// Route::get('/table/get-json', 'TableController@getJson')->name('table.get-json');

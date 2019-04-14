@@ -44,10 +44,14 @@
         data: function () {
             return {
                 balance: 70,
-                urldata: [],
+                urldata: [
+                    {'title':'Позиция 1', 'number':0, 'price':10},
+                    {'title':'Позиция 2', 'number':0, 'price':20},
+                    {'title':'Позиция 3', 'number':0, 'price':30},
+                ],
 
                 newTitle: '',
-                newPrice: 0,
+                newPrice: '',
             }
         },
         mounted() {
@@ -89,8 +93,12 @@
 
             addPosition: function () {
                 //console.log(this.urldata[this.urldata.length - 1]);
-                if(this.price == '') {
-                    this.price = 0;
+                if(this.newTitle == '') {
+                    this.newTitle = 'Новая позиция';
+                    // alert('Проверка');
+                }
+                if(this.newPrice == '') {
+                    this.newPrice = 0;
                     // alert('Проверка');
                 }
 
@@ -102,8 +110,8 @@
                 console.log(this.urldata[this.urldata.length - 1].number);
                 console.log(this.urldata[this.urldata.length - 1].price);
 
-                //this.newTitle = '';
-                //this.newPrice = '';
+                this.newTitle = '';
+                this.newPrice = '';
             },
 
 

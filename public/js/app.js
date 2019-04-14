@@ -2034,9 +2034,21 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       balance: 70,
-      urldata: [],
+      urldata: [{
+        'title': 'Позиция 1',
+        'number': 0,
+        'price': 10
+      }, {
+        'title': 'Позиция 2',
+        'number': 0,
+        'price': 20
+      }, {
+        'title': 'Позиция 3',
+        'number': 0,
+        'price': 30
+      }],
       newTitle: '',
-      newPrice: 0
+      newPrice: ''
     };
   },
   mounted: function mounted() {
@@ -2074,8 +2086,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     addPosition: function addPosition() {
       //console.log(this.urldata[this.urldata.length - 1]);
-      if (this.price == '') {
-        this.price = 0; // alert('Проверка');
+      if (this.newTitle == '') {
+        this.newTitle = 'Новая позиция'; // alert('Проверка');
+      }
+
+      if (this.newPrice == '') {
+        this.newPrice = 0; // alert('Проверка');
       } //var arr = {'title':this.newTitle, 'number':0, 'price':this.newPrice};
       // console.log(arr);
 
@@ -2087,8 +2103,9 @@ __webpack_require__.r(__webpack_exports__);
       });
       console.log(this.urldata[this.urldata.length - 1].title);
       console.log(this.urldata[this.urldata.length - 1].number);
-      console.log(this.urldata[this.urldata.length - 1].price); //this.newTitle = '';
-      //this.newPrice = '';
+      console.log(this.urldata[this.urldata.length - 1].price);
+      this.newTitle = '';
+      this.newPrice = '';
     }
   }
 });
