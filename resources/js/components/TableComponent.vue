@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <span>Остаток: {{ balance }} грн.</span>
+                {{title}}
                 <table class="table">
                     <thead>
                         <tr>
@@ -60,6 +61,7 @@
             // alert('медвед');
             // this.update()
         },
+        props: ['title'],
         methods: {
             init: function () {
                 axios.get('/table/get-json').then((response) => {

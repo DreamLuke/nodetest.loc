@@ -40,6 +40,7 @@ Vue.component('table-component', require('./components/TableComponent.vue').defa
 var Main = require('./components/MainComponent.vue').default;
 var Table = require('./components/TableComponent.vue').default;
 
+
 var router = new VueRouter({
     routes: [
         { path: '/', component: Main },

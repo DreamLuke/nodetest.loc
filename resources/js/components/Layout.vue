@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <h1>Мой сайт по изучению Vue.js</h1>
+            <h1>{{header}}</h1>
         </header>
         <section>
             <div class="row">
@@ -16,7 +16,7 @@
                     </ul>
                 </div>
                 <div class="col-md-10">
-                    <router-view></router-view>
+                    <router-view title="Главная страница сайта"></router-view>
                 </div>
             </div>
         </section>
@@ -27,6 +27,9 @@
 </template>
 
 <script>
+    export default {
+        props: ['header']
+    }
 </script>
 
 <style>
