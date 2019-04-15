@@ -35,11 +35,12 @@ const store = new Vuex.Store({
     state: {
         balance: 75,
         count: 0,
-        urldata: [
+        /*urldata: [
             {'title':'Позиция 1', 'number':0, 'price':10},
             {'title':'Позиция 2', 'number':0, 'price':20},
             {'title':'Позиция 3', 'number':0, 'price':30},
-        ],
+        ],*/
+        urldata: [],
 
         newTitle: '',
         newPrice: '',
@@ -159,6 +160,23 @@ const app = new Vue({
     el: '#app',
     store,
     router: router,
+    data: function () {
+        return {
+            //urldata: []
+        }
+    },
+    mounted() {
+        console.log('Component mounted.');
+        this.getDataFromOrderModel()
+    },
     methods: {
+        getDataFromOrderModel: function () {
+            axios.get('/table').then((response) => {
+                this.urldata = response.data;
+                store.state.urldata = response.data;
+            });
+        },
+
+
     }
 });

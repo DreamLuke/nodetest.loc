@@ -37,6 +37,7 @@
     export default {
         data: function () {
             return {
+                //urldata: []
             }
         },
         computed: {
@@ -52,6 +53,7 @@
         },
         mounted() {
             console.log('Component mounted.');
+            /*this.getDataFromOrderModel()*/
         },
         methods: {
 
@@ -66,6 +68,16 @@
             reset: function (index) {
                 this.$store.dispatch('reset', index);
             },
+
+            /*getDataFromOrderModel: function () {
+
+                this.is_refresh = true ;
+                axios.get('/table').then((response) => {
+                    console.log(response);
+                    this.urldata = response.data;
+                });
+
+            }*/
 
         }
     }

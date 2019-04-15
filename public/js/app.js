@@ -2103,7 +2103,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {//urldata: []
+    };
   },
   computed: {
     balance: function balance() {
@@ -2118,6 +2119,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+    /*this.getDataFromOrderModel()*/
   },
   methods: {
     add: function add(index) {
@@ -2129,6 +2131,14 @@ __webpack_require__.r(__webpack_exports__);
     reset: function reset(index) {
       this.$store.dispatch('reset', index);
     }
+    /*getDataFromOrderModel: function () {
+         this.is_refresh = true ;
+        axios.get('/table').then((response) => {
+            console.log(response);
+            this.urldata = response.data;
+        });
+     }*/
+
   }
 });
 
@@ -54233,19 +54243,13 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
     balance: 75,
     count: 0,
-    urldata: [{
-      'title': 'Позиция 1',
-      'number': 0,
-      'price': 10
-    }, {
-      'title': 'Позиция 2',
-      'number': 0,
-      'price': 20
-    }, {
-      'title': 'Позиция 3',
-      'number': 0,
-      'price': 30
-    }],
+
+    /*urldata: [
+        {'title':'Позиция 1', 'number':0, 'price':10},
+        {'title':'Позиция 2', 'number':0, 'price':20},
+        {'title':'Позиция 3', 'number':0, 'price':30},
+    ],*/
+    urldata: [],
     newTitle: '',
     newPrice: ''
   },
@@ -54380,7 +54384,24 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   store: store,
   router: router,
-  methods: {}
+  data: function data() {
+    return {//urldata: []
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+    this.getDataFromOrderModel();
+  },
+  methods: {
+    getDataFromOrderModel: function getDataFromOrderModel() {
+      var _this = this;
+
+      axios.get('/table').then(function (response) {
+        _this.urldata = response.data;
+        store.state.urldata = response.data;
+      });
+    }
+  }
 });
 
 /***/ }),

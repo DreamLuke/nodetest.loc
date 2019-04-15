@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -13,15 +14,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //dd('main page');
-        return view('welcome');
+        return Order::all();
     }
 
-    public function table()
-    {
-        dd('table');
-        // return view('table');
-    }
+
 
     /**
      * Show the form for creating a new resource.
