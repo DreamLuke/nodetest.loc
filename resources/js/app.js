@@ -82,7 +82,7 @@ const store = new Vuex.Store({
 
         addPosition({state, dispatch, commit}, inputArr) {
             state.newTitle = inputArr[0];
-            state.newPrice = inputArr[1];
+            state.newPrice = parseInt(inputArr[1]);
 
             if(state.newTitle == '') {
                 state.newTitle = 'Новая позиция';

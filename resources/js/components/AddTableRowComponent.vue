@@ -39,33 +39,6 @@
             console.log('Component mounted. AddTableComponent.');
         },
         methods: {
-            //saveMessage: function () {
-            /*addPosition: function () {
-                if(this.newTitle == '') {
-                    this.newTitle = 'Новая позиция';
-                    // alert('Проверка');
-                }
-                if(this.newPrice == '') {
-                    this.newPrice = 0;
-                    // alert('Проверка');
-                }
-                if(this.newTitle == '' && this.newPrice == '') {
-                    this.success = '';
-                }
-
-                // console.log(this.message)
-                //this.$emit('message', this.message);
-                var arr = {'title':this.newTitle, 'number':0, 'price':this.newPrice};
-
-
-                // this.$emit('addPosition', this.newTitle);
-                this.$emit('addPosition', arr);
-
-                this.newTitle = '';
-                this.newPrice = '';
-
-                alert('Позиция успешно сохранена!');
-            },*/
             addPosition: function ([newTitle, newPrice]) {
                 this.$store.dispatch('addPosition', [newTitle, newPrice]);
 

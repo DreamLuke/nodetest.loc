@@ -37,9 +37,6 @@
     export default {
         data: function () {
             return {
-                // newTitle: '',
-                // newPrice: '',
-                // balance:
             }
         },
         computed: {
@@ -53,41 +50,18 @@
                 return this.$store.state.urldata
             },
         },
-        props: ['people'],
         mounted() {
-            //this.init();
             console.log('Component mounted.');
-            // alert('медвед');
-            // this.update()
         },
         methods: {
 
-            /*add: function (url) {
-                if(this.balance >= url.price) {
-                    this.balance -= url.price;
-                    url.number++;
-                }
-            },*/
             add: function (index) {
                 this.$store.dispatch('add', index);
             },
 
-            /*subtract: function (url) {
-                if(url.number > 0) {
-                    this.balance += parseInt(url.price);
-                    url.number--;
-                }
-            },*/
             subtract: function (index) {
                 this.$store.dispatch('subtract', index);
             },
-
-            /*reset: function (url) {
-                while(url.number > 0) {
-                    this.balance += parseInt(url.price);
-                    url.number--;
-                }
-            },*/
 
             reset: function (index) {
                 this.$store.dispatch('reset', index);

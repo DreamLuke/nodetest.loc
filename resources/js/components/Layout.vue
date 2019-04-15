@@ -18,7 +18,8 @@
                 </ul>
                 <div class="col-md-10">
                     <!--<router-view title="Главная страница сайта" v-bind:urldata="urldata" @addPosition="addPositionToArray"></router-view>-->
-                    <router-view title="Главная страница сайта" @addPosition="addPositionToArray"></router-view>
+                    <!--<router-view title="Главная страница сайта" @addPosition="addPositionToArray"></router-view>-->
+                    <router-view title="Главная страница сайта"></router-view>
                 </div>
             </div>
         </section>
@@ -32,15 +33,6 @@
     export default {
         data: function () {
             return {
-                /*urldata: [
-                    {'title':'Позиция 1', 'number':0, 'price':10},
-                    {'title':'Позиция 2', 'number':0, 'price':20},
-                    {'title':'Позиция 3', 'number':0, 'price':30},
-                ],*/
-                // people: ['111', '222', ],
-
-                // newTitle: '',
-                // newPrice: '',
             }
         },
         computed: {
@@ -54,11 +46,9 @@
             // console.log(store.state.count);
         },
         methods: {
-            addPositionToArray: function (arr) {
-                // console.log(this.message)
-                // this.people.push(arr);
+            /*addPositionToArray: function (arr) {
                 this.urldata.push(arr);
-            },
+            },*/
         },
 
     }

@@ -1811,29 +1811,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     console.log('Component mounted. AddTableComponent.');
   },
   methods: {
-    //saveMessage: function () {
-
-    /*addPosition: function () {
-        if(this.newTitle == '') {
-            this.newTitle = 'Новая позиция';
-            // alert('Проверка');
-        }
-        if(this.newPrice == '') {
-            this.newPrice = 0;
-            // alert('Проверка');
-        }
-        if(this.newTitle == '' && this.newPrice == '') {
-            this.success = '';
-        }
-         // console.log(this.message)
-        //this.$emit('message', this.message);
-        var arr = {'title':this.newTitle, 'number':0, 'price':this.newPrice};
-          // this.$emit('addPosition', this.newTitle);
-        this.$emit('addPosition', arr);
-         this.newTitle = '';
-        this.newPrice = '';
-         alert('Позиция успешно сохранена!');
-    },*/
     addPosition: function addPosition(_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
           newTitle = _ref2[0],
@@ -1986,18 +1963,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      /*urldata: [
-          {'title':'Позиция 1', 'number':0, 'price':10},
-          {'title':'Позиция 2', 'number':0, 'price':20},
-          {'title':'Позиция 3', 'number':0, 'price':30},
-      ],*/
-      // people: ['111', '222', ],
-      // newTitle: '',
-      // newPrice: '',
-    };
+    return {};
   },
   computed: {
     urldata: function urldata() {
@@ -2009,11 +1978,9 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Component mounted.'); // console.log(store.state.count);
   },
   methods: {
-    addPositionToArray: function addPositionToArray(arr) {
-      // console.log(this.message)
-      // this.people.push(arr);
-      this.urldata.push(arr);
-    }
+    /*addPositionToArray: function (arr) {
+        this.urldata.push(arr);
+    },*/
   }
 });
 
@@ -2136,10 +2103,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {// newTitle: '',
-      // newPrice: '',
-      // balance:
-    };
+    return {};
   },
   computed: {
     balance: function balance() {
@@ -2152,39 +2116,16 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.state.urldata;
     }
   },
-  props: ['people'],
   mounted: function mounted() {
-    //this.init();
-    console.log('Component mounted.'); // alert('медвед');
-    // this.update()
+    console.log('Component mounted.');
   },
   methods: {
-    /*add: function (url) {
-        if(this.balance >= url.price) {
-            this.balance -= url.price;
-            url.number++;
-        }
-    },*/
     add: function add(index) {
       this.$store.dispatch('add', index);
     },
-
-    /*subtract: function (url) {
-        if(url.number > 0) {
-            this.balance += parseInt(url.price);
-            url.number--;
-        }
-    },*/
     subtract: function subtract(index) {
       this.$store.dispatch('subtract', index);
     },
-
-    /*reset: function (url) {
-        while(url.number > 0) {
-            this.balance += parseInt(url.price);
-            url.number--;
-        }
-    },*/
     reset: function reset(index) {
       this.$store.dispatch('reset', index);
     }
@@ -38213,12 +38154,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "col-md-10" },
-          [
-            _c("router-view", {
-              attrs: { title: "Главная страница сайта" },
-              on: { addPosition: _vm.addPositionToArray }
-            })
-          ],
+          [_c("router-view", { attrs: { title: "Главная страница сайта" } })],
           1
         )
       ])
@@ -54362,7 +54298,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
           dispatch = _ref4.dispatch,
           commit = _ref4.commit;
       state.newTitle = inputArr[0];
-      state.newPrice = inputArr[1];
+      state.newPrice = parseInt(inputArr[1]);
 
       if (state.newTitle == '') {
         state.newTitle = 'Новая позиция'; // alert('Проверка');
