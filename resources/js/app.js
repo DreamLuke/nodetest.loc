@@ -141,7 +141,6 @@ var Main = require('./components/MainPageComponent.vue').default;
 var Table = require('./components/TableComponent.vue').default;
 var AddTableRow = require('./components/AddTableRowComponent.vue').default;
 
-
 var router = new VueRouter({
     routes: [
         { path: '/', component: Main },
