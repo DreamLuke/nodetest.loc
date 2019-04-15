@@ -56,7 +56,6 @@ const store = new Vuex.Store({
         RESET(state, price) {
             state.balance += price
         },
-
     },
     actions: {
         add({state, dispatch, commit}, index) {
@@ -81,7 +80,10 @@ const store = new Vuex.Store({
             }
         },
 
-        addPosition({state, dispatch, commit}) {
+        addPosition({state, dispatch, commit}, inputArr) {
+            state.newTitle = inputArr[0];
+            state.newPrice = inputArr[1];
+
             if(state.newTitle == '') {
                 state.newTitle = 'Новая позиция';
                 // alert('Проверка');

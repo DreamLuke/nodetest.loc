@@ -17,7 +17,8 @@
                     </li>
                 </ul>
                 <div class="col-md-10">
-                    <router-view title="Главная страница сайта" v-bind:urldata="urldata" @addPosition="addPositionToArray"></router-view>
+                    <!--<router-view title="Главная страница сайта" v-bind:urldata="urldata" @addPosition="addPositionToArray"></router-view>-->
+                    <router-view title="Главная страница сайта" @addPosition="addPositionToArray"></router-view>
                 </div>
             </div>
         </section>
@@ -38,8 +39,8 @@
                 ],*/
                 // people: ['111', '222', ],
 
-                newTitle: '',
-                newPrice: '',
+                // newTitle: '',
+                // newPrice: '',
             }
         },
         computed: {

@@ -1763,6 +1763,14 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 //
 //
 //
@@ -1786,18 +1794,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      // newTitle: '',
-      // newPrice: '',
+      newTitle: '',
+      newPrice: '',
       success: ''
     };
   },
   computed: {
-    newTitle: function newTitle() {
-      return this.$store.state.newTitle;
+    /*newTitle() {
+        return this.$store.state.newTitle
     },
-    newPrice: function newPrice() {
-      return this.$store.state.newPrice;
-    }
+    newPrice() {
+        return this.$store.state.newPrice
+    },*/
   },
   mounted: function mounted() {
     console.log('Component mounted. AddTableComponent.');
@@ -1826,8 +1834,14 @@ __webpack_require__.r(__webpack_exports__);
         this.newPrice = '';
          alert('Позиция успешно сохранена!');
     },*/
-    addPosition: function addPosition() {
-      this.$store.dispatch('addPosition');
+    addPosition: function addPosition(_ref) {
+      var _ref2 = _slicedToArray(_ref, 2),
+          newTitle = _ref2[0],
+          newPrice = _ref2[1];
+
+      this.$store.dispatch('addPosition', [newTitle, newPrice]);
+      this.newTitle = '';
+      this.newPrice = '';
     }
   }
 });
@@ -1971,6 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1980,8 +1995,8 @@ __webpack_require__.r(__webpack_exports__);
           {'title':'Позиция 3', 'number':0, 'price':30},
       ],*/
       // people: ['111', '222', ],
-      newTitle: '',
-      newPrice: ''
+      // newTitle: '',
+      // newPrice: '',
     };
   },
   computed: {
@@ -2121,10 +2136,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      newTitle: '',
-      newPrice: '' // balance:
-
+    return {// newTitle: '',
+      // newPrice: '',
+      // balance:
     };
   },
   computed: {
@@ -2133,9 +2147,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     count: function count() {
       return this.$store.state.count;
+    },
+    urldata: function urldata() {
+      return this.$store.state.urldata;
     }
   },
-  props: ['people', 'urldata'],
+  props: ['people'],
   mounted: function mounted() {
     //this.init();
     console.log('Component mounted.'); // alert('медвед');
@@ -37999,7 +38016,11 @@ var render = function() {
         _vm._v(" "),
         _c("input", {
           attrs: { type: "submit", value: "Добавить" },
-          on: { click: _vm.addPosition }
+          on: {
+            click: function($event) {
+              return _vm.addPosition([_vm.newTitle, _vm.newPrice])
+            }
+          }
         })
       ]),
       _vm._v(" "),
@@ -38194,7 +38215,7 @@ var render = function() {
           { staticClass: "col-md-10" },
           [
             _c("router-view", {
-              attrs: { title: "Главная страница сайта", urldata: _vm.urldata },
+              attrs: { title: "Главная страница сайта" },
               on: { addPosition: _vm.addPositionToArray }
             })
           ],
@@ -54336,10 +54357,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         state.urldata[index].number--;
       }
     },
-    addPosition: function addPosition(_ref4) {
+    addPosition: function addPosition(_ref4, inputArr) {
       var state = _ref4.state,
           dispatch = _ref4.dispatch,
           commit = _ref4.commit;
+      state.newTitle = inputArr[0];
+      state.newPrice = inputArr[1];
 
       if (state.newTitle == '') {
         state.newTitle = 'Новая позиция'; // alert('Проверка');

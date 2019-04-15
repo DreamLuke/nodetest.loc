@@ -37,8 +37,8 @@
     export default {
         data: function () {
             return {
-                newTitle: '',
-                newPrice: '',
+                // newTitle: '',
+                // newPrice: '',
                 // balance:
             }
         },
@@ -49,8 +49,11 @@
             count() {
                 return this.$store.state.count
             },
+            urldata() {
+                return this.$store.state.urldata
+            },
         },
-        props: ['people', 'urldata'],
+        props: ['people'],
         mounted() {
             //this.init();
             console.log('Component mounted.');

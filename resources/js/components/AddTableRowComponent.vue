@@ -8,7 +8,7 @@
                 <label for="price">Цена за штуку</label>
                 <input type="number" name="price" min="0" id="price" placeholder="Цена за штуку" v-model="newPrice">
 
-                <input type="submit" v-on:click="addPosition" value="Добавить">
+                <input type="submit" v-on:click="addPosition([newTitle, newPrice])" value="Добавить">
             </div>
             <div class="success">
                 {{success}}
@@ -22,18 +22,18 @@
     export default {
         data: function () {
             return {
-                // newTitle: '',
-                // newPrice: '',
+                newTitle: '',
+                newPrice: '',
                 success: '',
             }
         },
         computed: {
-            newTitle() {
+            /*newTitle() {
                 return this.$store.state.newTitle
             },
             newPrice() {
                 return this.$store.state.newPrice
-            },
+            },*/
         },
         mounted() {
             console.log('Component mounted. AddTableComponent.');
@@ -66,8 +66,11 @@
 
                 alert('Позиция успешно сохранена!');
             },*/
-            addPosition: function () {
-                this.$store.dispatch('addPosition');
+            addPosition: function ([newTitle, newPrice]) {
+                this.$store.dispatch('addPosition', [newTitle, newPrice]);
+
+                this.newTitle = '';
+                this.newPrice = '';
             },
         },
     }
