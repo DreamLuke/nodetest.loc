@@ -37942,6 +37942,7 @@ var render = function() {
             name: "price",
             min: "0",
             id: "price",
+            step: "0.1",
             placeholder: "Цена за штуку"
           },
           domProps: { value: _vm.newPrice },
@@ -54298,7 +54299,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
           dispatch = _ref4.dispatch,
           commit = _ref4.commit;
       state.newTitle = inputArr[0];
-      state.newPrice = parseInt(inputArr[1]);
+      state.newPrice = parseFloat(inputArr[1]);
 
       if (state.newTitle == '') {
         state.newTitle = 'Новая позиция'; // alert('Проверка');
