@@ -70,7 +70,7 @@ const store = new Vuex.Store({
 
         addPosition({state, dispatch, commit}, inputArr) {
             state.newTitle = inputArr[0];
-            //state.newPrice = parseFloat(inputArr[1]);
+            state.newPrice = inputArr[1];
 
             if(state.newTitle == '') {
                 state.newTitle = 'Новая позиция';
@@ -78,7 +78,7 @@ const store = new Vuex.Store({
             }
             if(state.newPrice == '') {
                 state.newPrice = 0;
-                // alert('Проверка 22222');
+                //alert('Проверка 22222');
             } else {
                 state.newPrice = parseFloat(inputArr[1]);
             }
@@ -179,6 +179,7 @@ const app = new Vue({
     data: function () {
         return {
             //urldata: []
+            store,
         }
     },
     mounted() {

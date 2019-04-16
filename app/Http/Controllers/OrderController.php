@@ -38,8 +38,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd('1222222');
         $order = new Order;
 
         $order->title = $request->title; //'ТАЙТЛ 55';

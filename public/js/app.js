@@ -54310,14 +54310,15 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       var state = _ref4.state,
           dispatch = _ref4.dispatch,
           commit = _ref4.commit;
-      state.newTitle = inputArr[0]; //state.newPrice = parseFloat(inputArr[1]);
+      state.newTitle = inputArr[0];
+      state.newPrice = inputArr[1];
 
       if (state.newTitle == '') {
         state.newTitle = 'Новая позиция'; // alert('Проверка 11111');
       }
 
       if (state.newPrice == '') {
-        state.newPrice = 0; // alert('Проверка 22222');
+        state.newPrice = 0; //alert('Проверка 22222');
       } else {
         state.newPrice = parseFloat(inputArr[1]);
       } // alert('@ ' + inputArr[0] +' '+ inputArr[1]);
@@ -54403,7 +54404,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   store: store,
   router: router,
   data: function data() {
-    return {//urldata: []
+    return {
+      //urldata: []
+      store: store
     };
   },
   mounted: function mounted() {
