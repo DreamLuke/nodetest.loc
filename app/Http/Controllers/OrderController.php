@@ -14,6 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+        // dd(111);
         return Order::all();
     }
 
@@ -37,7 +38,14 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // dd('1222222');
+        $order = new Order;
+
+        $order->title = $request->title; //'ТАЙТЛ 55';
+        $order->number = '0';
+        $order->price = $request->price;
+        $order->save();
     }
 
     /**

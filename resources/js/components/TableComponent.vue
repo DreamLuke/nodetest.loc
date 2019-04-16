@@ -69,15 +69,7 @@
                 this.$store.dispatch('reset', index);
             },
 
-            /*getDataFromOrderModel: function () {
 
-                this.is_refresh = true ;
-                axios.get('/table').then((response) => {
-                    console.log(response);
-                    this.urldata = response.data;
-                });
-
-            }*/
 
         }
     }

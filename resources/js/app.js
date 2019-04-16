@@ -20,26 +20,10 @@ import {mapGetters} from 'vuex';
 Vue.use( VueRouter );
 Vue.use( Vuex );
 
-/*const store = new Vuex.Store({
-    state: {
-        count: 0
-    },
-    mutations: {
-        increment(state) {
-            state.count++
-        }
-    }
-});*/
-
 const store = new Vuex.Store({
     state: {
         balance: 75,
         count: 0,
-        /*urldata: [
-            {'title':'Позиция 1', 'number':0, 'price':10},
-            {'title':'Позиция 2', 'number':0, 'price':20},
-            {'title':'Позиция 3', 'number':0, 'price':30},
-        ],*/
         urldata: [],
 
         newTitle: '',
@@ -81,28 +65,59 @@ const store = new Vuex.Store({
             }
         },
 
+
+
+
         addPosition({state, dispatch, commit}, inputArr) {
             state.newTitle = inputArr[0];
-            state.newPrice = parseFloat(inputArr[1]);
+            //state.newPrice = parseFloat(inputArr[1]);
 
             if(state.newTitle == '') {
                 state.newTitle = 'Новая позиция';
-                // alert('Проверка');
+                // alert('Проверка 11111');
             }
             if(state.newPrice == '') {
                 state.newPrice = 0;
-                // alert('Проверка');
+                // alert('Проверка 22222');
+            } else {
+                state.newPrice = parseFloat(inputArr[1]);
             }
-            var arr = {'title':state.newTitle, 'number':0, 'price':state.newPrice};
-            state.urldata.push(arr);
+
+            // alert('@ ' + inputArr[0] +' '+ inputArr[1]);
+
+            // var arr = {'title':state.newTitle, 'number':0, 'price':state.newPrice};
+            // state.urldata.push(arr);
 
             // this.$emit('addPosition', this.newTitle);
             //this.$emit('addPosition', arr);
 
-            state.newTitle = '';
-            state.newPrice = '';
+            // state.newTitle = '';
+            // state.newPrice = '';
 
-            alert('Позиция успешно сохранена!');
+            // alert('Позиция успешно сохранена!');
+
+
+
+
+            axios.post('/table', {
+                title: state.newTitle,
+                number: 0,
+                price: state.newPrice,
+            }).then((response) => {
+                console.log('add ' + response.data.title);
+            });
+
+            axios.get('/table').then((response) => {
+                this.urldata = response.data;
+                store.state.urldata = response.data;
+            });
+
+
+
+
+
+
+
         },
     },
     getters: {
@@ -143,6 +158,7 @@ var Table = require('./components/TableComponent.vue').default;
 var AddTableRow = require('./components/AddTableRowComponent.vue').default;
 
 var router = new VueRouter({
+    mode: 'history',
     routes: [
         { path: '/', component: Main },
         { path: '/table', component: Table },
@@ -167,13 +183,28 @@ const app = new Vue({
     },
     mounted() {
         console.log('Component mounted.');
-        this.getDataFromOrderModel()
+        this.getDataFromOrderModel();
+        // this.addDataToOrderModel();
     },
     methods: {
         getDataFromOrderModel: function () {
             axios.get('/table').then((response) => {
                 this.urldata = response.data;
                 store.state.urldata = response.data;
+
+                console.log(response.data[0].title);
+                console.log(response.data[0].number);
+                console.log(response.data[0].price);
+            });
+        },
+
+        addDataToOrderModel: function () {
+            axios.post('/table', {
+                title: state.newTitle,
+                number: 0,
+                price: state.newPrice,
+            }).then((response) => {
+                console.log('add ' + response.data.title);
             });
         },
 

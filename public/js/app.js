@@ -1763,6 +1763,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -1771,6 +1773,20 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1810,7 +1826,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   mounted: function mounted() {
     console.log('Component mounted. AddTableComponent.');
   },
-  methods: {
+  methods: _defineProperty({
     addPosition: function addPosition(_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
           newTitle = _ref2[0],
@@ -1820,7 +1836,22 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.newTitle = '';
       this.newPrice = '';
     }
-  }
+  }, "addPosition", function addPosition(_ref3) {
+    var _ref4 = _slicedToArray(_ref3, 2),
+        newTitle = _ref4[0],
+        newPrice = _ref4[1];
+
+    this.$store.dispatch('addPosition', [newTitle, newPrice]);
+    this.newTitle = '';
+    this.newPrice = '';
+    /*axios.post('/table', {
+        title: 'ТАЙТЛ 88888',
+        number: 0,
+        price: 77764,
+    }).then((response) => {
+        console.log('add ' + response.data.title);
+    });*/
+  })
 });
 
 /***/ }),
@@ -2131,14 +2162,6 @@ __webpack_require__.r(__webpack_exports__);
     reset: function reset(index) {
       this.$store.dispatch('reset', index);
     }
-    /*getDataFromOrderModel: function () {
-         this.is_refresh = true ;
-        axios.get('/table').then((response) => {
-            console.log(response);
-            this.urldata = response.data;
-        });
-     }*/
-
   }
 });
 
@@ -54228,27 +54251,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
-/*const store = new Vuex.Store({
-    state: {
-        count: 0
-    },
-    mutations: {
-        increment(state) {
-            state.count++
-        }
-    }
-});*/
-
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
     balance: 75,
     count: 0,
-
-    /*urldata: [
-        {'title':'Позиция 1', 'number':0, 'price':10},
-        {'title':'Позиция 2', 'number':0, 'price':20},
-        {'title':'Позиция 3', 'number':0, 'price':30},
-    ],*/
     urldata: [],
     newTitle: '',
     newPrice: ''
@@ -54299,31 +54305,42 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       }
     },
     addPosition: function addPosition(_ref4, inputArr) {
+      var _this = this;
+
       var state = _ref4.state,
           dispatch = _ref4.dispatch,
           commit = _ref4.commit;
-      state.newTitle = inputArr[0];
-      state.newPrice = parseFloat(inputArr[1]);
+      state.newTitle = inputArr[0]; //state.newPrice = parseFloat(inputArr[1]);
 
       if (state.newTitle == '') {
-        state.newTitle = 'Новая позиция'; // alert('Проверка');
+        state.newTitle = 'Новая позиция'; // alert('Проверка 11111');
       }
 
       if (state.newPrice == '') {
-        state.newPrice = 0; // alert('Проверка');
-      }
-
-      var arr = {
-        'title': state.newTitle,
-        'number': 0,
-        'price': state.newPrice
-      };
-      state.urldata.push(arr); // this.$emit('addPosition', this.newTitle);
+        state.newPrice = 0; // alert('Проверка 22222');
+      } else {
+        state.newPrice = parseFloat(inputArr[1]);
+      } // alert('@ ' + inputArr[0] +' '+ inputArr[1]);
+      // var arr = {'title':state.newTitle, 'number':0, 'price':state.newPrice};
+      // state.urldata.push(arr);
+      // this.$emit('addPosition', this.newTitle);
       //this.$emit('addPosition', arr);
+      // state.newTitle = '';
+      // state.newPrice = '';
+      // alert('Позиция успешно сохранена!');
 
-      state.newTitle = '';
-      state.newPrice = '';
-      alert('Позиция успешно сохранена!');
+
+      axios.post('/table', {
+        title: state.newTitle,
+        number: 0,
+        price: state.newPrice
+      }).then(function (response) {
+        console.log('add ' + response.data.title);
+      });
+      axios.get('/table').then(function (response) {
+        _this.urldata = response.data;
+        store.state.urldata = response.data;
+      });
     }
   },
   getters: {
@@ -54363,6 +54380,7 @@ var Table = __webpack_require__(/*! ./components/TableComponent.vue */ "./resour
 var AddTableRow = __webpack_require__(/*! ./components/AddTableRowComponent.vue */ "./resources/js/components/AddTableRowComponent.vue")["default"];
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: 'history',
   routes: [{
     path: '/',
     component: Main
@@ -54390,15 +54408,27 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-    this.getDataFromOrderModel();
+    this.getDataFromOrderModel(); // this.addDataToOrderModel();
   },
   methods: {
     getDataFromOrderModel: function getDataFromOrderModel() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/table').then(function (response) {
-        _this.urldata = response.data;
+        _this2.urldata = response.data;
         store.state.urldata = response.data;
+        console.log(response.data[0].title);
+        console.log(response.data[0].number);
+        console.log(response.data[0].price);
+      });
+    },
+    addDataToOrderModel: function addDataToOrderModel() {
+      axios.post('/table', {
+        title: state.newTitle,
+        number: 0,
+        price: state.newPrice
+      }).then(function (response) {
+        console.log('add ' + response.data.title);
       });
     }
   }
