@@ -53,14 +53,21 @@
             console.log('Component mounted. AddTableComponent.');
         },
         methods: {
-            addPosition: function ([newTitle, newPrice]) {
+            /*addPosition: function ([newTitle, newPrice]) {
                 this.$store.dispatch('addPosition', [newTitle, newPrice]);
 
                 this.newTitle = '';
                 this.newPrice = '';
-            },
+            },*/
+
+            /*getData: function () {
+                this.$store.dispatch('getData');
+                // alert('getData');
+            },*/
 
             addPosition: function ([newTitle, newPrice]) {
+                //this.getData();
+
                 this.$store.dispatch('addPosition', [newTitle, newPrice]);
 
                 this.newTitle = '';
@@ -74,6 +81,7 @@
                 }).then((response) => {
                     console.log('add ' + response.data.title);
                 });*/
+
 
             },
         },

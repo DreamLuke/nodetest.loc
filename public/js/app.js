@@ -1763,8 +1763,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -1826,32 +1824,35 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   mounted: function mounted() {
     console.log('Component mounted. AddTableComponent.');
   },
-  methods: _defineProperty({
+  methods: {
+    /*addPosition: function ([newTitle, newPrice]) {
+        this.$store.dispatch('addPosition', [newTitle, newPrice]);
+         this.newTitle = '';
+        this.newPrice = '';
+    },*/
+
+    /*getData: function () {
+        this.$store.dispatch('getData');
+        // alert('getData');
+    },*/
     addPosition: function addPosition(_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
           newTitle = _ref2[0],
           newPrice = _ref2[1];
 
+      //this.getData();
       this.$store.dispatch('addPosition', [newTitle, newPrice]);
       this.newTitle = '';
       this.newPrice = '';
+      /*axios.post('/table', {
+          title: 'ТАЙТЛ 88888',
+          number: 0,
+          price: 77764,
+      }).then((response) => {
+          console.log('add ' + response.data.title);
+      });*/
     }
-  }, "addPosition", function addPosition(_ref3) {
-    var _ref4 = _slicedToArray(_ref3, 2),
-        newTitle = _ref4[0],
-        newPrice = _ref4[1];
-
-    this.$store.dispatch('addPosition', [newTitle, newPrice]);
-    this.newTitle = '';
-    this.newPrice = '';
-    /*axios.post('/table', {
-        title: 'ТАЙТЛ 88888',
-        number: 0,
-        price: 77764,
-    }).then((response) => {
-        console.log('add ' + response.data.title);
-    });*/
-  })
+  }
 });
 
 /***/ }),
@@ -54321,26 +54322,19 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         state.newPrice = 0; //alert('Проверка 22222');
       } else {
         state.newPrice = parseFloat(inputArr[1]);
-      } // alert('@ ' + inputArr[0] +' '+ inputArr[1]);
-      // var arr = {'title':state.newTitle, 'number':0, 'price':state.newPrice};
-      // state.urldata.push(arr);
-      // this.$emit('addPosition', this.newTitle);
-      //this.$emit('addPosition', arr);
-      // state.newTitle = '';
-      // state.newPrice = '';
-      // alert('Позиция успешно сохранена!');
-
+      }
 
       axios.post('/table', {
         title: state.newTitle,
         number: 0,
         price: state.newPrice
       }).then(function (response) {
-        console.log('add ' + response.data.title);
-      });
-      axios.get('/table').then(function (response) {
-        _this.urldata = response.data;
-        store.state.urldata = response.data;
+        // console.log('add ' + response.data.title);
+        axios.get('/table').then(function (response) {
+          _this.urldata = response.data;
+          store.state.urldata = response.data;
+        });
+        alert('Позиция успешно сохранена!');
       });
     }
   },
@@ -54404,9 +54398,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   store: store,
   router: router,
   data: function data() {
-    return {
-      //urldata: []
-      store: store
+    return {//urldata: []
+      //store,
     };
   },
   mounted: function mounted() {

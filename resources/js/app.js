@@ -65,9 +65,6 @@ const store = new Vuex.Store({
             }
         },
 
-
-
-
         addPosition({state, dispatch, commit}, inputArr) {
             state.newTitle = inputArr[0];
             state.newPrice = inputArr[1];
@@ -82,42 +79,21 @@ const store = new Vuex.Store({
             } else {
                 state.newPrice = parseFloat(inputArr[1]);
             }
-
-            // alert('@ ' + inputArr[0] +' '+ inputArr[1]);
-
-            // var arr = {'title':state.newTitle, 'number':0, 'price':state.newPrice};
-            // state.urldata.push(arr);
-
-            // this.$emit('addPosition', this.newTitle);
-            //this.$emit('addPosition', arr);
-
-            // state.newTitle = '';
-            // state.newPrice = '';
-
-            // alert('Позиция успешно сохранена!');
-
-
-
-
+            
             axios.post('/table', {
                 title: state.newTitle,
                 number: 0,
                 price: state.newPrice,
             }).then((response) => {
-                console.log('add ' + response.data.title);
+                // console.log('add ' + response.data.title);
+
+                axios.get('/table').then((response) => {
+                    this.urldata = response.data;
+                    store.state.urldata = response.data;
+                });
+
+                alert('Позиция успешно сохранена!');
             });
-
-            axios.get('/table').then((response) => {
-                this.urldata = response.data;
-                store.state.urldata = response.data;
-            });
-
-
-
-
-
-
-
         },
     },
     getters: {
@@ -179,7 +155,7 @@ const app = new Vue({
     data: function () {
         return {
             //urldata: []
-            store,
+            //store,
         }
     },
     mounted() {
