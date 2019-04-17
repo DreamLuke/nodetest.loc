@@ -2142,9 +2142,6 @@ __webpack_require__.r(__webpack_exports__);
     balance: function balance() {
       return this.$store.state.balance;
     },
-    count: function count() {
-      return this.$store.state.count;
-    },
     urldata: function urldata() {
       return this.$store.state.urldata;
     }
@@ -2154,8 +2151,10 @@ __webpack_require__.r(__webpack_exports__);
     /*this.getDataFromOrderModel()*/
   },
   methods: {
-    add: function add(index) {
-      this.$store.dispatch('add', index);
+    first: function first() {},
+    add: function add(index, id) {
+      // alert('id ' +id);
+      this.$store.dispatch('add', [index, id]);
     },
     subtract: function subtract(index) {
       this.$store.dispatch('subtract', index);
@@ -38330,7 +38329,7 @@ var render = function() {
                       staticClass: "btn btn-default text mb-1",
                       on: {
                         click: function($event) {
-                          return _vm.add(index)
+                          return _vm.add(index, url.id)
                         }
                       }
                     },
@@ -54255,7 +54254,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
     balance: 75,
-    count: 0,
     urldata: [],
     newTitle: '',
     newPrice: ''
@@ -54272,16 +54270,27 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     }
   },
   actions: {
-    add: function add(_ref, index) {
+    add: function add(_ref, arr) {
+      var _this = this;
+
       var state = _ref.state,
           dispatch = _ref.dispatch,
           commit = _ref.commit;
 
-      // store.commit('ADD', state.urldata[index].price);
-      if (state.balance >= state.urldata[index].price) {
-        // state.balance -= state.urldata[index].price;
-        store.commit('ADD', state.urldata[index].price);
-        state.urldata[index].number++;
+      // alert('index = ' + arr[0] + ', id = ' + arr[1]);
+      if (state.balance >= state.urldata[arr[0]].price) {
+        state.urldata[arr[0]].number++; // alert('number ' + state.urldata[arr[0]].number);
+        // alert('id ' + arr[1]);
+
+        axios.put('/table/' + arr[1] + '/', {
+          number: state.urldata[arr[0]].number
+        }).then(function (response) {
+          axios.get('/table').then(function (response) {
+            _this.urldata = response.data; // store.state.urldata = response.data;
+            // alert('привет !!!');
+            // alert('ID ' + arr[1]);
+          });
+        });
       }
     },
     subtract: function subtract(_ref2, index) {
@@ -54306,7 +54315,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       }
     },
     addPosition: function addPosition(_ref4, inputArr) {
-      var _this = this;
+      var _this2 = this;
 
       var state = _ref4.state,
           dispatch = _ref4.dispatch,
@@ -54331,18 +54340,14 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       }).then(function (response) {
         // console.log('add ' + response.data.title);
         axios.get('/table').then(function (response) {
-          _this.urldata = response.data;
+          _this2.urldata = response.data;
           store.state.urldata = response.data;
         });
         alert('Позиция успешно сохранена!');
       });
     }
   },
-  getters: {
-    tasks: function tasks(state) {
-      return state.count;
-    }
-  }
+  getters: {}
 }); // store.commit('add');
 // console.log(store.state.count);
 
@@ -54398,8 +54403,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   store: store,
   router: router,
   data: function data() {
-    return {//urldata: []
-      //store,
+    return {
+      //urldata: [],
+      store: store
     };
   },
   mounted: function mounted() {
@@ -54408,25 +54414,23 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   methods: {
     getDataFromOrderModel: function getDataFromOrderModel() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get('/table').then(function (response) {
-        _this2.urldata = response.data;
+        _this3.urldata = response.data;
         store.state.urldata = response.data;
-        console.log(response.data[0].title);
-        console.log(response.data[0].number);
-        console.log(response.data[0].price);
-      });
-    },
-    addDataToOrderModel: function addDataToOrderModel() {
-      axios.post('/table', {
-        title: state.newTitle,
-        number: 0,
-        price: state.newPrice
-      }).then(function (response) {
-        console.log('add ' + response.data.title);
       });
     }
+    /*addDataToOrderModel: function () {
+        axios.post('/table', {
+            title: state.newTitle,
+            number: 0,
+            price: state.newPrice,
+        }).then((response) => {
+            console.log('add ' + response.data.title);
+        });
+    },*/
+
   }
 });
 

@@ -21,7 +21,7 @@
                             <th>{{ url.number*url.price }}</th>
                             <th>
                                 <!--<button v-on:click="add(url)" class="btn btn-default text mb-1">+</button>-->
-                                <button v-on:click="add(index)" class="btn btn-default text mb-1">+</button>
+                                <button v-on:click="add(index, url.id)" class="btn btn-default text mb-1">+</button>
                                 <button v-on:click="subtract(index)" class="btn btn-default text mb-1">-</button>
                                 <button v-on:click="reset(index)" class="btn btn-default text mb-1">x</button>
                             </th>
@@ -44,9 +44,6 @@
             balance() {
                 return this.$store.state.balance
             },
-            count() {
-                return this.$store.state.count
-            },
             urldata() {
                 return this.$store.state.urldata
             },
@@ -57,8 +54,13 @@
         },
         methods: {
 
-            add: function (index) {
-                this.$store.dispatch('add', index);
+            first: function () {
+
+            },
+
+            add: function (index, id) {
+                // alert('id ' +id);
+                this.$store.dispatch('add', [index, id]);
             },
 
             subtract: function (index) {

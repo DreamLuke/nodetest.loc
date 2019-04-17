@@ -39,7 +39,6 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $order = new Order;
-
         $order->title = $request->title; //'ТАЙТЛ 55';
         $order->number = '0';
         $order->price = $request->price;
@@ -77,7 +76,15 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$order = Order::get('id', $id)->first();
+
+        $order = Order::find($id)->first();
+        // dd($order);die;
+
+        $order->title = $order->title;
+        $order->number = $request->number;
+        $order->price = $order->price;
+        $order->save();
     }
 
     /**

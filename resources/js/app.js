@@ -23,7 +23,6 @@ Vue.use( Vuex );
 const store = new Vuex.Store({
     state: {
         balance: 75,
-        count: 0,
         urldata: [],
 
         newTitle: '',
@@ -43,14 +42,32 @@ const store = new Vuex.Store({
         },
     },
     actions: {
-        add({state, dispatch, commit}, index) {
-            // store.commit('ADD', state.urldata[index].price);
-            if(state.balance >= state.urldata[index].price) {
-                // state.balance -= state.urldata[index].price;
-                store.commit('ADD', state.urldata[index].price);
-                state.urldata[index].number++;
+        add({state, dispatch, commit}, arr) {
+
+            // alert('index = ' + arr[0] + ', id = ' + arr[1]);
+
+            if(state.balance >= state.urldata[arr[0]].price) {
+                state.urldata[arr[0]].number++;
+                // alert('number ' + state.urldata[arr[0]].number);
+
+                // alert('id ' + arr[1]);
+
+                axios.put('/table/' + arr[1] +'/', {
+                    number: state.urldata[arr[0]].number,
+                }).then((response) => {
+                    axios.get('/table').then((response) => {
+                        this.urldata = response.data;
+                        // store.state.urldata = response.data;
+                        // alert('привет !!!');
+                        // alert('ID ' + arr[1]);
+                    });
+                });
+
+
             }
+
         },
+
         subtract({state, dispatch, commit}, index) {
             if(state.urldata[index].number > 0) {
                 // state.balance -= state.urldata[index].price;
@@ -79,7 +96,7 @@ const store = new Vuex.Store({
             } else {
                 state.newPrice = parseFloat(inputArr[1]);
             }
-            
+
             axios.post('/table', {
                 title: state.newTitle,
                 number: 0,
@@ -94,12 +111,14 @@ const store = new Vuex.Store({
 
                 alert('Позиция успешно сохранена!');
             });
+
         },
+
+
+
+
     },
     getters: {
-        tasks (state) {
-            return state.count;
-        }
     }
 })
 
@@ -154,8 +173,8 @@ const app = new Vue({
     router: router,
     data: function () {
         return {
-            //urldata: []
-            //store,
+            //urldata: [],
+            store
         }
     },
     mounted() {
@@ -168,14 +187,10 @@ const app = new Vue({
             axios.get('/table').then((response) => {
                 this.urldata = response.data;
                 store.state.urldata = response.data;
-
-                console.log(response.data[0].title);
-                console.log(response.data[0].number);
-                console.log(response.data[0].price);
             });
         },
 
-        addDataToOrderModel: function () {
+        /*addDataToOrderModel: function () {
             axios.post('/table', {
                 title: state.newTitle,
                 number: 0,
@@ -183,7 +198,7 @@ const app = new Vue({
             }).then((response) => {
                 console.log('add ' + response.data.title);
             });
-        },
+        },*/
 
 
     }

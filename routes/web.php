@@ -33,7 +33,10 @@ Route::get('/start/get-json', 'StartController@getJson')->name('start.get-json')
 
 /*Route::get('/table', 'OrderController@index');
 Route::post('/table', 'OrderController@store');*/
-
 // Route::get('/table', 'OrderController@table')->name('table');
 
 Route::resource('table', 'OrderController');
+Route::put('table/{id}', 'OrderController@update');
+
+
+
