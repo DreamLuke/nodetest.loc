@@ -196,7 +196,8 @@ const app = new Vue({
     data: function () {
         return {
             //urldata: [],
-            store
+            store,
+            i: 0,
         }
     },
     mounted() {
@@ -206,9 +207,15 @@ const app = new Vue({
     },
     methods: {
         getDataFromOrderModel: function () {
+            // alert('asfasfasdf');
+
             axios.get('/table').then((response) => {
                 this.urldata = response.data;
                 store.state.urldata = response.data;
+
+                for(this.i = 0; this.i < store.state.urldata.length; this.i++) {
+                    store.commit('ADD', store.state.urldata[this.i].price*store.state.urldata[this.i].number);
+                }
             });
         },
 

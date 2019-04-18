@@ -54434,7 +54434,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: function data() {
     return {
       //urldata: [],
-      store: store
+      store: store,
+      i: 0
     };
   },
   mounted: function mounted() {
@@ -54445,9 +54446,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     getDataFromOrderModel: function getDataFromOrderModel() {
       var _this5 = this;
 
+      // alert('asfasfasdf');
       axios.get('/table').then(function (response) {
         _this5.urldata = response.data;
         store.state.urldata = response.data;
+
+        for (_this5.i = 0; _this5.i < store.state.urldata.length; _this5.i++) {
+          store.commit('ADD', store.state.urldata[_this5.i].price * store.state.urldata[_this5.i].number);
+        }
       });
     }
     /*addDataToOrderModel: function () {
