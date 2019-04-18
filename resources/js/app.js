@@ -71,6 +71,20 @@ const store = new Vuex.Store({
             }
         },
 
+        reset({state, dispatch, commit}, arr) {
+            while(state.urldata[arr[0]].number > 0) {
+                store.commit('RESET', state.urldata[arr[0]].price);
+                state.urldata[arr[0]].number--;
+            }
+
+            axios.put('/table/' + arr[1] +'/', {
+                number: state.urldata[arr[0]].number,
+            }).then((response) => {
+                axios.get('/table').then((response) => {
+                    this.urldata = response.data;
+                });
+            });
+        },
 
 
         /*subtract({state, dispatch, commit}, index) {
@@ -81,14 +95,14 @@ const store = new Vuex.Store({
             }
         },*/
 
-
-
-        reset({state, dispatch, commit}, index) {
+        /*reset({state, dispatch, commit}, index) {
             while(state.urldata[index].number > 0) {
                 store.commit('RESET', state.urldata[index].price);
                 state.urldata[index].number--;
             }
-        },
+        },*/
+
+
 
         addPosition({state, dispatch, commit}, inputArr) {
             state.newTitle = inputArr[0];
