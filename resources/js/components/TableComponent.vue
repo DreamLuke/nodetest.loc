@@ -22,7 +22,7 @@
                             <th>
                                 <!--<button v-on:click="add(url)" class="btn btn-default text mb-1">+</button>-->
                                 <button v-on:click="add(index, url.id)" class="btn btn-default text mb-1">+</button>
-                                <button v-on:click="subtract(index)" class="btn btn-default text mb-1">-</button>
+                                <button v-on:click="subtract(index, url.id)" class="btn btn-default text mb-1">-</button>
                                 <button v-on:click="reset(index)" class="btn btn-default text mb-1">x</button>
                             </th>
                         </tr>
@@ -63,8 +63,8 @@
                 this.$store.dispatch('add', [index, id]);
             },
 
-            subtract: function (index) {
-                this.$store.dispatch('subtract', index);
+            subtract: function (index, id) {
+                this.$store.dispatch('subtract', [index, id]);
             },
 
             reset: function (index) {

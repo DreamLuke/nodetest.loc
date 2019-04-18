@@ -78,7 +78,7 @@ class OrderController extends Controller
     {
         //$order = Order::get('id', $id)->first();
 
-        $order = Order::find($id)->first();
+        $order = Order::find($id);
         // dd($order);die;
 
         $order->title = $order->title;

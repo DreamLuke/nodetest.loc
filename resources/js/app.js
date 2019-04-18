@@ -56,14 +56,33 @@ const store = new Vuex.Store({
                 });
             }
         },
+        subtract({state, dispatch, commit}, arr) {
+            if(state.urldata[arr[0]].number > 0) {
+                state.urldata[arr[0]].number--;
+                store.commit('SUBTRACT', state.urldata[arr[0]].price);
 
-        subtract({state, dispatch, commit}, index) {
+                axios.put('/table/' + arr[1] +'/', {
+                    number: state.urldata[arr[0]].number,
+                }).then((response) => {
+                    axios.get('/table').then((response) => {
+                        this.urldata = response.data;
+                    });
+                });
+            }
+        },
+
+
+
+        /*subtract({state, dispatch, commit}, index) {
             if(state.urldata[index].number > 0) {
                 // state.balance -= state.urldata[index].price;
                 store.commit('SUBTRACT', state.urldata[index].price);
                 state.urldata[index].number--;
             }
-        },
+        },*/
+
+
+
         reset({state, dispatch, commit}, index) {
             while(state.urldata[index].number > 0) {
                 store.commit('RESET', state.urldata[index].price);

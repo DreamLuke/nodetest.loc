@@ -2156,8 +2156,8 @@ __webpack_require__.r(__webpack_exports__);
       // alert('id ' +id);
       this.$store.dispatch('add', [index, id]);
     },
-    subtract: function subtract(index) {
-      this.$store.dispatch('subtract', index);
+    subtract: function subtract(index, id) {
+      this.$store.dispatch('subtract', [index, id]);
     },
     reset: function reset(index) {
       this.$store.dispatch('reset', index);
@@ -38342,7 +38342,7 @@ var render = function() {
                       staticClass: "btn btn-default text mb-1",
                       on: {
                         click: function($event) {
-                          return _vm.subtract(index)
+                          return _vm.subtract(index, url.id)
                         }
                       }
                     },
@@ -54289,17 +54289,33 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         });
       }
     },
-    subtract: function subtract(_ref2, index) {
+    subtract: function subtract(_ref2, arr) {
+      var _this2 = this;
+
       var state = _ref2.state,
           dispatch = _ref2.dispatch,
           commit = _ref2.commit;
 
-      if (state.urldata[index].number > 0) {
-        // state.balance -= state.urldata[index].price;
-        store.commit('SUBTRACT', state.urldata[index].price);
-        state.urldata[index].number--;
+      if (state.urldata[arr[0]].number > 0) {
+        state.urldata[arr[0]].number--;
+        store.commit('SUBTRACT', state.urldata[arr[0]].price);
+        axios.put('/table/' + arr[1] + '/', {
+          number: state.urldata[arr[0]].number
+        }).then(function (response) {
+          axios.get('/table').then(function (response) {
+            _this2.urldata = response.data;
+          });
+        });
       }
     },
+
+    /*subtract({state, dispatch, commit}, index) {
+        if(state.urldata[index].number > 0) {
+            // state.balance -= state.urldata[index].price;
+            store.commit('SUBTRACT', state.urldata[index].price);
+            state.urldata[index].number--;
+        }
+    },*/
     reset: function reset(_ref3, index) {
       var state = _ref3.state,
           dispatch = _ref3.dispatch,
@@ -54311,7 +54327,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       }
     },
     addPosition: function addPosition(_ref4, inputArr) {
-      var _this2 = this;
+      var _this3 = this;
 
       var state = _ref4.state,
           dispatch = _ref4.dispatch,
@@ -54336,7 +54352,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       }).then(function (response) {
         // console.log('add ' + response.data.title);
         axios.get('/table').then(function (response) {
-          _this2.urldata = response.data;
+          _this3.urldata = response.data;
           store.state.urldata = response.data;
         });
         alert('Позиция успешно сохранена!');
@@ -54410,10 +54426,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   methods: {
     getDataFromOrderModel: function getDataFromOrderModel() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/table').then(function (response) {
-        _this3.urldata = response.data;
+        _this4.urldata = response.data;
         store.state.urldata = response.data;
       });
     }
