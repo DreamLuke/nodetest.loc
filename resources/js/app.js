@@ -146,12 +146,8 @@ const store = new Vuex.Store({
                 axios.get('/table').then((response) => {
                     this.urldata = response.data;
                     store.state.urldata = response.data;
-
-                    axios.get('/get-date').then((response) => {
-                        // this.date = response.data.updated_at;
-                        // alert('___' + this.date );
-                    });
-
+                    state.date = this.urldata[this.urldata.length - 1].updated_at;
+                    alert('2222222');
                 });
 
                 alert('Позиция успешно сохранена!');
@@ -161,15 +157,12 @@ const store = new Vuex.Store({
 
         remove({state, dispatch, commit}, arr) {
             axios.delete('/table/' + arr[1] +'/').then((response) => {
+
+                state.date = this.urldata[arr[0]].updated_at;
+
                 axios.get('/table').then((response) => {
                     this.urldata = response.data;
                     store.state.urldata = response.data;
-
-                    axios.get('/get-date').then((response) => {
-                        // this.date = response.data.updated_at;
-                        // alert('___' + this.date );
-                    });
-
                 });
             });
         },

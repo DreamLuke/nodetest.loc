@@ -54410,9 +54410,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         axios.get('/table').then(function (response) {
           _this4.urldata = response.data;
           store.state.urldata = response.data;
-          axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
-            // alert('___' + this.date );
-          });
+          state.date = _this4.urldata[_this4.urldata.length - 1].updated_at;
+          alert('2222222');
         });
         alert('Позиция успешно сохранена!');
       });
@@ -54424,12 +54423,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
           dispatch = _ref5.dispatch,
           commit = _ref5.commit;
       axios["delete"]('/table/' + arr[1] + '/').then(function (response) {
+        state.date = _this5.urldata[arr[0]].updated_at;
         axios.get('/table').then(function (response) {
           _this5.urldata = response.data;
           store.state.urldata = response.data;
-          axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
-            // alert('___' + this.date );
-          });
         });
       });
     }
