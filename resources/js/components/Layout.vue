@@ -38,7 +38,7 @@
         computed: {
             urldata() {
                 return this.$store.state.urldata
-            }
+            },
         },
         props: ['header'],
         mounted() {

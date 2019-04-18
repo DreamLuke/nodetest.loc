@@ -27,6 +27,8 @@ const store = new Vuex.Store({
 
         newTitle: '',
         newPrice: '',
+
+        date: '12345',
     },
     mutations: {
         ADD(state, price) {
@@ -52,6 +54,11 @@ const store = new Vuex.Store({
                 }).then((response) => {
                     axios.get('/table').then((response) => {
                         this.urldata = response.data;
+
+                        axios.get('/get-date').then((response) => {
+                            // this.date = response.data.updated_at;
+                            // alert('___' + this.date );
+                        });
                     });
                 });
             }
@@ -66,6 +73,11 @@ const store = new Vuex.Store({
                 }).then((response) => {
                     axios.get('/table').then((response) => {
                         this.urldata = response.data;
+
+                        axios.get('/get-date').then((response) => {
+                            // this.date = response.data.updated_at;
+                            // alert('___' + this.date );
+                        });
                     });
                 });
             }
@@ -82,6 +94,11 @@ const store = new Vuex.Store({
             }).then((response) => {
                 axios.get('/table').then((response) => {
                     this.urldata = response.data;
+
+                    axios.get('/get-date').then((response) => {
+                        // this.date = response.data.updated_at;
+                        // alert('___' + this.date );
+                    });
                 });
             });
         },
@@ -129,6 +146,12 @@ const store = new Vuex.Store({
                 axios.get('/table').then((response) => {
                     this.urldata = response.data;
                     store.state.urldata = response.data;
+
+                    axios.get('/get-date').then((response) => {
+                        // this.date = response.data.updated_at;
+                        // alert('___' + this.date );
+                    });
+
                 });
 
                 alert('Позиция успешно сохранена!');
@@ -141,7 +164,12 @@ const store = new Vuex.Store({
                 axios.get('/table').then((response) => {
                     this.urldata = response.data;
                     store.state.urldata = response.data;
-                    // alert('DeLeTe');
+
+                    axios.get('/get-date').then((response) => {
+                        // this.date = response.data.updated_at;
+                        // alert('___' + this.date );
+                    });
+
                 });
             });
         },
@@ -208,6 +236,7 @@ const app = new Vue({
             //urldata: [],
             store,
             i: 0,
+            date: '',
         }
     },
     mounted() {
@@ -217,7 +246,7 @@ const app = new Vue({
     },
     methods: {
         getDataFromOrderModel: function () {
-            // alert('asfasfasdf');
+
 
             axios.get('/table').then((response) => {
                 this.urldata = response.data;
@@ -227,6 +256,18 @@ const app = new Vue({
                     store.commit('ADD', store.state.urldata[this.i].price*store.state.urldata[this.i].number);
                 }
             });
+
+            axios.get('/get-date').then((response) => {
+                // this.date = response.data.updated_at;
+                store.state.date = response.data.updated_at;
+
+                // alert('___' + response.data.updated_at );
+            });
+
+
+
+
+
         },
 
         /*addDataToOrderModel: function () {

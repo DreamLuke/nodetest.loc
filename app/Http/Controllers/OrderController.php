@@ -14,8 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // dd(111);
-        return Order::all();
+         return Order::all();
+        // return Order::orderBy('updated_at', 'DESC')->get();
     }
 
 
@@ -99,6 +99,13 @@ class OrderController extends Controller
         //$order->delete();
 
         Order::where('id', $id)->delete();
+    }
+
+    public function getLastUpdateDate()
+    {
+        // return '12345';
+        return Order::orderBy('updated_at', 'DESC')->first();
+        //return Order::all()->groupBy('updated_at');
     }
 }
 

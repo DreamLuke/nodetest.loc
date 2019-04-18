@@ -10,6 +10,7 @@
                             <th>Количество</th>
                             <th>Цена за единицу продукции</th>
                             <th>Цена</th>
+                            <th>Дата</th>
                             <th>Действие</th>
                         </tr>
                     </thead>
@@ -19,6 +20,7 @@
                             <th>{{ url.number }}</th>
                             <th>{{ url.price }}</th>
                             <th>{{ url.number*url.price }}</th>
+                            <th>{{ url.updated_at }}</th>
                             <th>
                                 <!--<button v-on:click="add(url)" class="btn btn-default text mb-1">+</button>-->
                                 <button v-on:click="add(index, url.id)" class="btn btn-default text mb-1">+</button>
@@ -32,6 +34,7 @@
                 </table>
             </div>
         </div>
+        {{ date }}
     </div>
 </template>
 
@@ -48,6 +51,9 @@
             },
             urldata() {
                 return this.$store.state.urldata
+            },
+            date() {
+                return this.$store.state.date
             },
         },
         mounted() {

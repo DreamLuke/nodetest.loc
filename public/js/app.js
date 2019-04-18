@@ -2135,6 +2135,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {//urldata: []
@@ -2146,6 +2149,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     urldata: function urldata() {
       return this.$store.state.urldata;
+    },
+    date: function date() {
+      return this.$store.state.date;
     }
   },
   mounted: function mounted() {
@@ -38327,6 +38333,8 @@ var render = function() {
                 _vm._v(" "),
                 _c("th", [_vm._v(_vm._s(url.number * url.price))]),
                 _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(url.updated_at))]),
+                _vm._v(" "),
                 _c("th", [
                   _c(
                     "button",
@@ -38386,7 +38394,8 @@ var render = function() {
           )
         ])
       ])
-    ])
+    ]),
+    _vm._v("\n    " + _vm._s(_vm.date) + "\n")
   ])
 }
 var staticRenderFns = [
@@ -38403,6 +38412,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Цена за единицу продукции")]),
         _vm._v(" "),
         _c("th", [_vm._v("Цена")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Дата")]),
         _vm._v(" "),
         _c("th", [_vm._v("Действие")])
       ])
@@ -54274,7 +54285,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     balance: 75,
     urldata: [],
     newTitle: '',
-    newPrice: ''
+    newPrice: '',
+    date: '12345'
   },
   mutations: {
     ADD: function ADD(state, price) {
@@ -54303,6 +54315,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         }).then(function (response) {
           axios.get('/table').then(function (response) {
             _this.urldata = response.data;
+            axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
+              // alert('___' + this.date );
+            });
           });
         });
       }
@@ -54322,6 +54337,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         }).then(function (response) {
           axios.get('/table').then(function (response) {
             _this2.urldata = response.data;
+            axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
+              // alert('___' + this.date );
+            });
           });
         });
       }
@@ -54343,6 +54361,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       }).then(function (response) {
         axios.get('/table').then(function (response) {
           _this3.urldata = response.data;
+          axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
+            // alert('___' + this.date );
+          });
         });
       });
     },
@@ -54389,6 +54410,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         axios.get('/table').then(function (response) {
           _this4.urldata = response.data;
           store.state.urldata = response.data;
+          axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
+            // alert('___' + this.date );
+          });
         });
         alert('Позиция успешно сохранена!');
       });
@@ -54402,7 +54426,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       axios["delete"]('/table/' + arr[1] + '/').then(function (response) {
         axios.get('/table').then(function (response) {
           _this5.urldata = response.data;
-          store.state.urldata = response.data; // alert('DeLeTe');
+          store.state.urldata = response.data;
+          axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
+            // alert('___' + this.date );
+          });
         });
       });
     }
@@ -54466,7 +54493,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     return {
       //urldata: [],
       store: store,
-      i: 0
+      i: 0,
+      date: ''
     };
   },
   mounted: function mounted() {
@@ -54477,7 +54505,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     getDataFromOrderModel: function getDataFromOrderModel() {
       var _this6 = this;
 
-      // alert('asfasfasdf');
       axios.get('/table').then(function (response) {
         _this6.urldata = response.data;
         store.state.urldata = response.data;
@@ -54485,6 +54512,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         for (_this6.i = 0; _this6.i < store.state.urldata.length; _this6.i++) {
           store.commit('ADD', store.state.urldata[_this6.i].price * store.state.urldata[_this6.i].number);
         }
+      });
+      axios.get('/get-date').then(function (response) {
+        // this.date = response.data.updated_at;
+        store.state.date = response.data.updated_at; // alert('___' + response.data.updated_at );
       });
     }
     /*addDataToOrderModel: function () {
