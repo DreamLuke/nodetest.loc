@@ -43,29 +43,18 @@ const store = new Vuex.Store({
     },
     actions: {
         add({state, dispatch, commit}, arr) {
-
-            // alert('index = ' + arr[0] + ', id = ' + arr[1]);
-
             if(state.balance >= state.urldata[arr[0]].price) {
                 state.urldata[arr[0]].number++;
-                // alert('number ' + state.urldata[arr[0]].number);
-
-                // alert('id ' + arr[1]);
+                store.commit('ADD', state.urldata[arr[0]].price);
 
                 axios.put('/table/' + arr[1] +'/', {
                     number: state.urldata[arr[0]].number,
                 }).then((response) => {
                     axios.get('/table').then((response) => {
                         this.urldata = response.data;
-                        // store.state.urldata = response.data;
-                        // alert('привет !!!');
-                        // alert('ID ' + arr[1]);
                     });
                 });
-
-
             }
-
         },
 
         subtract({state, dispatch, commit}, index) {

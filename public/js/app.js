@@ -54277,18 +54277,14 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
           dispatch = _ref.dispatch,
           commit = _ref.commit;
 
-      // alert('index = ' + arr[0] + ', id = ' + arr[1]);
       if (state.balance >= state.urldata[arr[0]].price) {
-        state.urldata[arr[0]].number++; // alert('number ' + state.urldata[arr[0]].number);
-        // alert('id ' + arr[1]);
-
+        state.urldata[arr[0]].number++;
+        store.commit('ADD', state.urldata[arr[0]].price);
         axios.put('/table/' + arr[1] + '/', {
           number: state.urldata[arr[0]].number
         }).then(function (response) {
           axios.get('/table').then(function (response) {
-            _this.urldata = response.data; // store.state.urldata = response.data;
-            // alert('привет !!!');
-            // alert('ID ' + arr[1]);
+            _this.urldata = response.data;
           });
         });
       }
