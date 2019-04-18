@@ -2133,6 +2133,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {//urldata: []
@@ -2161,6 +2163,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     reset: function reset(index, id) {
       this.$store.dispatch('reset', [index, id]);
+    },
+    remove: function remove(index, id) {
+      this.$store.dispatch('remove', [index, id]);
     }
   }
 });
@@ -38360,6 +38365,19 @@ var render = function() {
                       }
                     },
                     [_vm._v("x")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default text mb-1",
+                      on: {
+                        click: function($event) {
+                          return _vm.remove(index, url.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Удалить")]
                   )
                 ])
               ])
@@ -54374,6 +54392,19 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         });
         alert('Позиция успешно сохранена!');
       });
+    },
+    remove: function remove(_ref5, arr) {
+      var _this5 = this;
+
+      var state = _ref5.state,
+          dispatch = _ref5.dispatch,
+          commit = _ref5.commit;
+      axios["delete"]('/table/' + arr[1] + '/').then(function (response) {
+        axios.get('/table').then(function (response) {
+          _this5.urldata = response.data;
+          store.state.urldata = response.data; // alert('DeLeTe');
+        });
+      });
     }
   },
   getters: {}
@@ -54444,15 +54475,15 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   methods: {
     getDataFromOrderModel: function getDataFromOrderModel() {
-      var _this5 = this;
+      var _this6 = this;
 
       // alert('asfasfasdf');
       axios.get('/table').then(function (response) {
-        _this5.urldata = response.data;
+        _this6.urldata = response.data;
         store.state.urldata = response.data;
 
-        for (_this5.i = 0; _this5.i < store.state.urldata.length; _this5.i++) {
-          store.commit('ADD', store.state.urldata[_this5.i].price * store.state.urldata[_this5.i].number);
+        for (_this6.i = 0; _this6.i < store.state.urldata.length; _this6.i++) {
+          store.commit('ADD', store.state.urldata[_this6.i].price * store.state.urldata[_this6.i].number);
         }
       });
     }

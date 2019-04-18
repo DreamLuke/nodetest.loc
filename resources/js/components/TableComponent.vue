@@ -24,6 +24,8 @@
                                 <button v-on:click="add(index, url.id)" class="btn btn-default text mb-1">+</button>
                                 <button v-on:click="subtract(index, url.id)" class="btn btn-default text mb-1">-</button>
                                 <button v-on:click="reset(index, url.id)" class="btn btn-default text mb-1">x</button>
+
+                                <button v-on:click="remove(index, url.id)" class="btn btn-default text mb-1">Удалить</button>
                             </th>
                         </tr>
                     </tbody>
@@ -71,6 +73,9 @@
                 this.$store.dispatch('reset', [index, id]);
             },
 
+            remove: function (index, id) {
+                this.$store.dispatch('remove', [index, id]);
+            },
 
 
         }

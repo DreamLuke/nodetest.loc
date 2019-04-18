@@ -136,6 +136,16 @@ const store = new Vuex.Store({
 
         },
 
+        remove({state, dispatch, commit}, arr) {
+            axios.delete('/table/' + arr[1] +'/').then((response) => {
+                axios.get('/table').then((response) => {
+                    this.urldata = response.data;
+                    store.state.urldata = response.data;
+                    // alert('DeLeTe');
+                });
+            });
+        },
+
 
 
 
