@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "dateformat": "^3.0.3",
         "vue-router": "^3.0.4",
         "vuex": "^3.1.0"
     }

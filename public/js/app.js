@@ -54685,10 +54685,13 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         number: state.urldata[arr[0]].number
       }).then(function (response) {
         axios.get('/get-date').then(function (response) {
-          // store.state.date = response.data.updated_at;
-          store.state.date = $.ajax({
+          // var date2 = $.ajax({async: false}).getResponseHeader('Date');
+          // store.state.date = $.ajax({async: false}).getResponseHeader('Date');
+          // store.state.date = $.ajax({async: false}).getResponseHeader('Date');
+          // dateFormat(now, "mm/dd/yyyy HH:MM:ss");
+          store.state.date = dateFormat($.ajax({
             async: false
-          }).getResponseHeader('Date');
+          }).getResponseHeader('Date'), "mm/dd/yyyy HH:MM:ss");
           axios["delete"]('/table/' + arr[1] + '/').then(function (response) {
             axios.get('/table').then(function (response) {
               state.urldata = response.data;

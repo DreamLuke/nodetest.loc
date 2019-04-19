@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31002426-49ed-46a9-be17-89daeb474e54" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/nodetest.loc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nodetest.loc.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AddTableRowComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AddTableRowComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Layout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/TableComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/TableComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/UpdateTableRowComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/UpdateTableRowComponent.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="178" column="39" selection-start-line="178" selection-start-column="39" selection-end-line="178" selection-end-column="39" />
+            <state relative-caret-position="216">
+              <caret line="183" column="101" selection-start-line="183" selection-start-column="101" selection-end-line="183" selection-end-column="101" />
               <folding>
                 <element signature="e#358#380#0" expanded="true" />
               </folding>
@@ -120,9 +114,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Layout.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/TableComponent.vue" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/AddTableRowComponent.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/UpdateTableRowComponent.vue" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
       </list>
     </option>
   </component>
@@ -286,12 +280,12 @@
       <workItem from="1555572324216" duration="16202000" />
       <workItem from="1555656541963" duration="16145000" />
       <workItem from="1555683747073" duration="533000" />
-      <workItem from="1555686487686" duration="2105000" />
+      <workItem from="1555686487686" duration="4207000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139305000" />
+    <option name="totallyTimeSpent" value="141407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -461,8 +455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="178" column="39" selection-start-line="178" selection-start-column="39" selection-end-line="178" selection-end-column="39" />
+        <state relative-caret-position="216">
+          <caret line="183" column="101" selection-start-line="183" selection-start-column="101" selection-end-line="183" selection-end-column="101" />
           <folding>
             <element signature="e#358#380#0" expanded="true" />
           </folding>

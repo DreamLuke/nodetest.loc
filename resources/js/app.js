@@ -175,8 +175,13 @@ const store = new Vuex.Store({
                 number: state.urldata[arr[0]].number,
             }).then((response) => {
                 axios.get('/get-date').then((response) => {
-                    // store.state.date = response.data.updated_at;
-                    store.state.date = $.ajax({async: false}).getResponseHeader('Date');
+                    // var date2 = $.ajax({async: false}).getResponseHeader('Date');
+
+                    // store.state.date = $.ajax({async: false}).getResponseHeader('Date');
+                    // store.state.date = $.ajax({async: false}).getResponseHeader('Date');
+                    // dateFormat(now, "mm/dd/yyyy HH:MM:ss");
+
+                    store.state.date = dateFormat($.ajax({async: false}).getResponseHeader('Date'), "mm/dd/yyyy HH:MM:ss");
 
                     axios.delete('/table/' + arr[1] +'/').then((response) => {
                         axios.get('/table').then((response) => {
