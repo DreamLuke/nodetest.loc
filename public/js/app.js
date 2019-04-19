@@ -54311,13 +54311,15 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         state.urldata[arr[0]].number++;
         store.commit('ADD', state.urldata[arr[0]].price);
         axios.put('/table/' + arr[1] + '/', {
-          number: state.urldata[arr[0]].number
+          title: state.urldata[arr[0]].title,
+          number: state.urldata[arr[0]].number,
+          price: state.urldata[arr[0]].price
         }).then(function (response) {
           axios.get('/table').then(function (response) {
-            _this.urldata = response.data;
-            axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
-              // alert('___' + this.date );
-            });
+            _this.urldata = response.data; //axios.get('/get-date').then((response) => {
+            // this.date = response.data.updated_at;
+            // alert('___' + this.date );
+            //});
           });
         });
       }
@@ -54360,28 +54362,14 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         number: state.urldata[arr[0]].number
       }).then(function (response) {
         axios.get('/table').then(function (response) {
-          _this3.urldata = response.data;
-          axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
-            // alert('___' + this.date );
-          });
+          _this3.urldata = response.data; // state.urldata = response.data;
+          //axios.get('/get-date').then((response) => {
+          //this.date = response.data.updated_at;
+          // alert('___' + this.date );
+          //});
         });
       });
     },
-
-    /*subtract({state, dispatch, commit}, index) {
-        if(state.urldata[index].number > 0) {
-            // state.balance -= state.urldata[index].price;
-            store.commit('SUBTRACT', state.urldata[index].price);
-            state.urldata[index].number--;
-        }
-    },*/
-
-    /*reset({state, dispatch, commit}, index) {
-        while(state.urldata[index].number > 0) {
-            store.commit('RESET', state.urldata[index].price);
-            state.urldata[index].number--;
-        }
-    },*/
     addPosition: function addPosition(_ref4, inputArr) {
       var _this4 = this;
 
@@ -54409,9 +54397,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         // console.log('add ' + response.data.title);
         axios.get('/table').then(function (response) {
           _this4.urldata = response.data;
-          store.state.urldata = response.data;
-          state.date = _this4.urldata[_this4.urldata.length - 1].updated_at;
-          alert('2222222');
+          state.urldata = response.data;
+          state.date = _this4.urldata[_this4.urldata.length - 1].updated_at; // alert('2222222');
         });
         alert('Позиция успешно сохранена!');
       });
@@ -54422,11 +54409,18 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       var state = _ref5.state,
           dispatch = _ref5.dispatch,
           commit = _ref5.commit;
+
+      // dispatch('reset', {amount: arr); не работает
+      while (state.urldata[arr[0]].number > 0) {
+        store.commit('RESET', state.urldata[arr[0]].price);
+        state.urldata[arr[0]].number--;
+      }
+
       axios["delete"]('/table/' + arr[1] + '/').then(function (response) {
         state.date = _this5.urldata[arr[0]].updated_at;
         axios.get('/table').then(function (response) {
           _this5.urldata = response.data;
-          store.state.urldata = response.data;
+          state.urldata = response.data;
         });
       });
     }
