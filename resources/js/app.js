@@ -144,6 +144,62 @@ const store = new Vuex.Store({
 
         },
 
+
+        updatePosition({state, dispatch, commit}, inputArr) {
+            alert('updatePosition ');
+
+            /*axios.put('/table-update/' + arr[1] +'/', {
+                title: state.urldata[arr[0]].title,
+                number: state.urldata[arr[0]].number,
+                price: state.urldata[arr[0]].price,
+            }).then((response) => {
+                alert('updatePosition ' +arr[1]0;
+
+                axios.get('/get-date').then((response) => {
+                    store.state.date = response.data.updated_at;
+                    axios.get('/table').then((response) => {
+                        state.urldata = response.data;
+                        state.addStatus = true;
+                    });
+                });
+            });*/
+
+
+            /*state.newTitle = inputArr[0];
+            state.newPrice = inputArr[1];
+
+            if(state.newTitle == '') {
+                state.newTitle = 'Новая позиция';
+                // alert('Проверка 11111');
+            }
+            if(state.newPrice == '') {
+                state.newPrice = 0;
+            } else {
+                state.newPrice = parseFloat(inputArr[1]);
+            }
+
+            axios.post('/table', {
+                title: state.newTitle,
+                number: 0,
+                price: state.newPrice,
+            }).then((response) => {
+
+                axios.get('/get-date').then((response) => {
+                    store.state.date = response.data.updated_at;
+
+                    axios.get('/table').then((response) => {
+                        state.urldata = response.data;
+                        alert('Позиция успешно сохранена!');
+                    });
+                });
+            });*/
+        },
+
+
+
+
+
+
         remove({state, dispatch, commit}, arr) {
             // dispatch('reset', {amount: arr); не работает
             while(state.urldata[arr[0]].number > 0) {
@@ -155,7 +211,7 @@ const store = new Vuex.Store({
                 number: state.urldata[arr[0]].number,
             }).then((response) => {
                 axios.get('/get-date').then((response) => {
-                    store.state.date = response.data.updated_at;
+                    // store.state.date = response.data.updated_at;
                     store.state.date = $.ajax({async: false}).getResponseHeader('Date');
 
                     axios.delete('/table/' + arr[1] +'/').then((response) => {
@@ -204,6 +260,7 @@ Vue.component('add-table-row-component', require('./components/AddTableRowCompon
 var Main = require('./components/MainPageComponent.vue').default;
 var Table = require('./components/TableComponent.vue').default;
 var AddTableRow = require('./components/AddTableRowComponent.vue').default;
+var UpdateTableRow = require('./components/UpdateTableRowComponent.vue').default;
 
 var router = new VueRouter({
     mode: 'history',
@@ -211,6 +268,7 @@ var router = new VueRouter({
         { path: '/', component: Main },
         { path: '/table', component: Table },
         { path: '/add-table-row', component: AddTableRow },
+        { path: '/update-table-row', component: UpdateTableRow },
     ]
 })
 

@@ -20,7 +20,7 @@
 
                 <label for="price">Цена за штуку</label>
                 <input type="number" name="price" min="0" id="price" step="0.1" placeholder="Цена за штуку" v-model="newPrice">
-
+                <router-link to="/update-table-row">Редактировать позицию</router-link>
                 <input type="submit" v-on:click="addPosition([newTitle, newPrice])" value="Добавить">
 
             </div>

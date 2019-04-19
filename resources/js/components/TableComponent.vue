@@ -27,6 +27,11 @@
                                 <button v-on:click="subtract(index, url.id)" class="btn btn-default text mb-1">-</button>
                                 <button v-on:click="reset(index, url.id)" class="btn btn-default text mb-1">x</button>
 
+                                <!--<router-link to="/update-table-row/">Редактировать позицию {{ url.id }}</router-link>-->
+                                <!--<router-link to="{path: '/update-table-row', query: {id: 1}">Редактировать позицию {{ url.id }}</router-link>-->
+                                <!--<router-link :to="{path: 'update-table-row', params: {id: '{{ url.id}}'}}">Редактировать позицию {{ url.id }}</router-link>-->
+                                <router-link :to="{path: 'update-table-row', query: { id: url.id }}">Редактировать позицию {{ url.id }}</router-link>
+
                                 <button v-on:click="remove(index, url.id)" class="btn btn-default text mb-1">Удалить</button>
                             </th>
                         </tr>

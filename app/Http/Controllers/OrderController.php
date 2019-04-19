@@ -87,6 +87,17 @@ class OrderController extends Controller
         $order->save();
     }
 
+    public function updatePosition(Request $request, $id)
+    {
+        $order = Order::find($id);
+
+        $order->title = $request->title;
+        $order->number = $request->number;
+        $order->price = $request->price;
+        $order->save();
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *

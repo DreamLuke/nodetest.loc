@@ -37,6 +37,7 @@ Route::post('/table', 'OrderController@store');*/
 
 Route::resource('table', 'OrderController');
 Route::put('table/{id}', 'OrderController@update');
+Route::put('table-update/{id}', 'OrderController@updatePosition');
 
 Route::get('get-date', 'OrderController@getLastUpdateDate');
 
