@@ -179,9 +179,15 @@ const store = new Vuex.Store({
 
                     // store.state.date = $.ajax({async: false}).getResponseHeader('Date');
                     // store.state.date = $.ajax({async: false}).getResponseHeader('Date');
-                    // dateFormat(now, "mm/dd/yyyy HH:MM:ss");
 
-                    store.state.date = dateFormat($.ajax({async: false}).getResponseHeader('Date'), "mm/dd/yyyy HH:MM:ss");
+                    var dateFormat = require('dateformat');
+                    var now = new Date();
+                    // Basic usage
+                    // dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+
+                    store.state.date = dateFormat(now, "yyyy-mm-dd h:MM:ss");
+
+
 
                     axios.delete('/table/' + arr[1] +'/').then((response) => {
                         axios.get('/table').then((response) => {
