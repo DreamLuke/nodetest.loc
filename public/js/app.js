@@ -54286,7 +54286,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     urldata: [],
     newTitle: '',
     newPrice: '',
-    date: '12345'
+    date: '12345',
+    addStatus: true,
+    subtractStatus: true
   },
   mutations: {
     ADD: function ADD(state, price) {
@@ -54301,13 +54303,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   },
   actions: {
     add: function add(_ref, arr) {
-      var _this = this;
-
       var state = _ref.state,
           dispatch = _ref.dispatch,
           commit = _ref.commit;
 
-      if (state.balance >= state.urldata[arr[0]].price) {
+      if (state.balance >= state.urldata[arr[0]].price && state.addStatus) {
+        state.addStatus = false;
         state.urldata[arr[0]].number++;
         store.commit('ADD', state.urldata[arr[0]].price);
         axios.put('/table/' + arr[1] + '/', {
@@ -54315,39 +54316,40 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
           number: state.urldata[arr[0]].number,
           price: state.urldata[arr[0]].price
         }).then(function (response) {
-          axios.get('/table').then(function (response) {
-            _this.urldata = response.data; //axios.get('/get-date').then((response) => {
-            // this.date = response.data.updated_at;
-            // alert('___' + this.date );
-            //});
+          axios.get('/get-date').then(function (response) {
+            store.state.date = response.data.updated_at;
+            axios.get('/table').then(function (response) {
+              state.urldata = response.data;
+              state.addStatus = true;
+            });
           });
         });
       }
     },
     subtract: function subtract(_ref2, arr) {
-      var _this2 = this;
-
       var state = _ref2.state,
           dispatch = _ref2.dispatch,
           commit = _ref2.commit;
 
-      if (state.urldata[arr[0]].number > 0) {
+      if (state.urldata[arr[0]].number > 0 && state.subtractStatus) {
+        state.subtractStatus = false;
         state.urldata[arr[0]].number--;
         store.commit('SUBTRACT', state.urldata[arr[0]].price);
         axios.put('/table/' + arr[1] + '/', {
           number: state.urldata[arr[0]].number
         }).then(function (response) {
-          axios.get('/table').then(function (response) {
-            _this2.urldata = response.data;
-            axios.get('/get-date').then(function (response) {// this.date = response.data.updated_at;
-              // alert('___' + this.date );
+          axios.get('/get-date').then(function (response) {
+            store.state.date = response.data.updated_at;
+            axios.get('/table').then(function (response) {
+              state.urldata = response.data;
+              state.subtractStatus = true;
             });
           });
         });
       }
     },
     reset: function reset(_ref3, arr) {
-      var _this3 = this;
+      var _this = this;
 
       var state = _ref3.state,
           dispatch = _ref3.dispatch,
@@ -54356,23 +54358,22 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       while (state.urldata[arr[0]].number > 0) {
         store.commit('RESET', state.urldata[arr[0]].price);
         state.urldata[arr[0]].number--;
-      }
+      } //console.log('balance ' + state.balance);
+
 
       axios.put('/table/' + arr[1] + '/', {
         number: state.urldata[arr[0]].number
       }).then(function (response) {
-        axios.get('/table').then(function (response) {
-          _this3.urldata = response.data; // state.urldata = response.data;
-          //axios.get('/get-date').then((response) => {
-          //this.date = response.data.updated_at;
-          // alert('___' + this.date );
-          //});
+        axios.get('/get-date').then(function (response) {
+          store.state.date = response.data.updated_at;
+          axios.get('/table').then(function (response) {
+            _this.urldata = response.data;
+            state.urldata = response.data;
+          });
         });
       });
     },
     addPosition: function addPosition(_ref4, inputArr) {
-      var _this4 = this;
-
       var state = _ref4.state,
           dispatch = _ref4.dispatch,
           commit = _ref4.commit;
@@ -54384,7 +54385,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       }
 
       if (state.newPrice == '') {
-        state.newPrice = 0; //alert('Проверка 22222');
+        state.newPrice = 0;
       } else {
         state.newPrice = parseFloat(inputArr[1]);
       }
@@ -54394,18 +54395,16 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         number: 0,
         price: state.newPrice
       }).then(function (response) {
-        // console.log('add ' + response.data.title);
-        axios.get('/table').then(function (response) {
-          _this4.urldata = response.data;
-          state.urldata = response.data;
-          state.date = _this4.urldata[_this4.urldata.length - 1].updated_at; // alert('2222222');
+        axios.get('/get-date').then(function (response) {
+          store.state.date = response.data.updated_at;
+          axios.get('/table').then(function (response) {
+            state.urldata = response.data;
+            alert('Позиция успешно сохранена!');
+          });
         });
-        alert('Позиция успешно сохранена!');
       });
     },
     remove: function remove(_ref5, arr) {
-      var _this5 = this;
-
       var state = _ref5.state,
           dispatch = _ref5.dispatch,
           commit = _ref5.commit;
@@ -54416,11 +54415,19 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         state.urldata[arr[0]].number--;
       }
 
-      axios["delete"]('/table/' + arr[1] + '/').then(function (response) {
-        state.date = _this5.urldata[arr[0]].updated_at;
-        axios.get('/table').then(function (response) {
-          _this5.urldata = response.data;
-          state.urldata = response.data;
+      axios.put('/table/' + arr[1] + '/', {
+        number: state.urldata[arr[0]].number
+      }).then(function (response) {
+        axios.get('/get-date').then(function (response) {
+          store.state.date = response.data.updated_at;
+          store.state.date = $.ajax({
+            async: false
+          }).getResponseHeader('Date');
+          axios["delete"]('/table/' + arr[1] + '/').then(function (response) {
+            axios.get('/table').then(function (response) {
+              state.urldata = response.data;
+            });
+          });
         });
       });
     }
@@ -54485,7 +54492,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       //urldata: [],
       store: store,
       i: 0,
-      date: ''
+      date: '54321'
     };
   },
   mounted: function mounted() {
@@ -54494,31 +54501,20 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   methods: {
     getDataFromOrderModel: function getDataFromOrderModel() {
-      var _this6 = this;
+      var _this2 = this;
 
       axios.get('/table').then(function (response) {
-        _this6.urldata = response.data;
+        // this.urldata = response.data;
         store.state.urldata = response.data;
 
-        for (_this6.i = 0; _this6.i < store.state.urldata.length; _this6.i++) {
-          store.commit('ADD', store.state.urldata[_this6.i].price * store.state.urldata[_this6.i].number);
+        for (_this2.i = 0; _this2.i < store.state.urldata.length; _this2.i++) {
+          store.commit('ADD', store.state.urldata[_this2.i].price * store.state.urldata[_this2.i].number);
         }
       });
       axios.get('/get-date').then(function (response) {
-        // this.date = response.data.updated_at;
-        store.state.date = response.data.updated_at; // alert('___' + response.data.updated_at );
+        store.state.date = response.data.updated_at;
       });
     }
-    /*addDataToOrderModel: function () {
-        axios.post('/table', {
-            title: state.newTitle,
-            number: 0,
-            price: state.newPrice,
-        }).then((response) => {
-            console.log('add ' + response.data.title);
-        });
-    },*/
-
   }
 });
 

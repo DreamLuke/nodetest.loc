@@ -29,6 +29,9 @@ const store = new Vuex.Store({
         newPrice: '',
 
         date: '12345',
+
+        addStatus: true,
+        subtractStatus: true,
     },
     mutations: {
         ADD(state, price) {
@@ -45,7 +48,9 @@ const store = new Vuex.Store({
     },
     actions: {
         add({state, dispatch, commit}, arr) {
-            if(state.balance >= state.urldata[arr[0]].price) {
+
+            if(state.balance >= state.urldata[arr[0]].price && state.addStatus) {
+                state.addStatus = false;
                 state.urldata[arr[0]].number++;
                 store.commit('ADD', state.urldata[arr[0]].price);
 
@@ -54,31 +59,30 @@ const store = new Vuex.Store({
                     number: state.urldata[arr[0]].number,
                     price: state.urldata[arr[0]].price,
                 }).then((response) => {
-                    axios.get('/table').then((response) => {
-                        this.urldata = response.data;
-
-                        //axios.get('/get-date').then((response) => {
-                            // this.date = response.data.updated_at;
-                            // alert('___' + this.date );
-                        //});
+                    axios.get('/get-date').then((response) => {
+                        store.state.date = response.data.updated_at;
+                        axios.get('/table').then((response) => {
+                            state.urldata = response.data;
+                            state.addStatus = true;
+                        });
                     });
                 });
             }
         },
         subtract({state, dispatch, commit}, arr) {
-            if(state.urldata[arr[0]].number > 0) {
+            if(state.urldata[arr[0]].number > 0  && state.subtractStatus) {
+                state.subtractStatus = false;
                 state.urldata[arr[0]].number--;
                 store.commit('SUBTRACT', state.urldata[arr[0]].price);
 
                 axios.put('/table/' + arr[1] +'/', {
                     number: state.urldata[arr[0]].number,
                 }).then((response) => {
-                    axios.get('/table').then((response) => {
-                        this.urldata = response.data;
-
-                        axios.get('/get-date').then((response) => {
-                            // this.date = response.data.updated_at;
-                            // alert('___' + this.date );
+                    axios.get('/get-date').then((response) => {
+                        store.state.date = response.data.updated_at;
+                        axios.get('/table').then((response) => {
+                            state.urldata = response.data;
+                            state.subtractStatus = true;
                         });
                     });
                 });
@@ -90,18 +94,18 @@ const store = new Vuex.Store({
                 store.commit('RESET', state.urldata[arr[0]].price);
                 state.urldata[arr[0]].number--;
             }
+            //console.log('balance ' + state.balance);
 
             axios.put('/table/' + arr[1] +'/', {
                 number: state.urldata[arr[0]].number,
             }).then((response) => {
-                axios.get('/table').then((response) => {
-                    this.urldata = response.data;
-                    // state.urldata = response.data;
+                axios.get('/get-date').then((response) => {
+                    store.state.date = response.data.updated_at;
 
-                    //axios.get('/get-date').then((response) => {
-                        //this.date = response.data.updated_at;
-                        // alert('___' + this.date );
-                    //});
+                    axios.get('/table').then((response) => {
+                        this.urldata = response.data;
+                        state.urldata = response.data;
+                    });
                 });
             });
         },
@@ -116,7 +120,6 @@ const store = new Vuex.Store({
             }
             if(state.newPrice == '') {
                 state.newPrice = 0;
-                //alert('Проверка 22222');
             } else {
                 state.newPrice = parseFloat(inputArr[1]);
             }
@@ -126,16 +129,17 @@ const store = new Vuex.Store({
                 number: 0,
                 price: state.newPrice,
             }).then((response) => {
-                // console.log('add ' + response.data.title);
 
-                axios.get('/table').then((response) => {
-                    this.urldata = response.data;
-                    state.urldata = response.data;
-                    state.date = this.urldata[this.urldata.length - 1].updated_at;
-                    // alert('2222222');
+                axios.get('/get-date').then((response) => {
+                    store.state.date = response.data.updated_at;
+
+                    axios.get('/table').then((response) => {
+                        state.urldata = response.data;
+                        alert('Позиция успешно сохранена!');
+                    });
                 });
 
-                alert('Позиция успешно сохранена!');
+
             });
 
         },
@@ -147,12 +151,18 @@ const store = new Vuex.Store({
                 state.urldata[arr[0]].number--;
             }
 
+            axios.put('/table/' + arr[1] +'/', {
+                number: state.urldata[arr[0]].number,
+            }).then((response) => {
+                axios.get('/get-date').then((response) => {
+                    store.state.date = response.data.updated_at;
+                    store.state.date = $.ajax({async: false}).getResponseHeader('Date');
 
-            axios.delete('/table/' + arr[1] +'/').then((response) => {
-                state.date = this.urldata[arr[0]].updated_at;
-                axios.get('/table').then((response) => {
-                    this.urldata = response.data;
-                    state.urldata = response.data;
+                    axios.delete('/table/' + arr[1] +'/').then((response) => {
+                        axios.get('/table').then((response) => {
+                            state.urldata = response.data;
+                        });
+                    });
                 });
             });
         },
@@ -219,7 +229,7 @@ const app = new Vue({
             //urldata: [],
             store,
             i: 0,
-            date: '',
+            date: '54321',
         }
     },
     mounted() {
@@ -232,7 +242,7 @@ const app = new Vue({
 
 
             axios.get('/table').then((response) => {
-                this.urldata = response.data;
+                // this.urldata = response.data;
                 store.state.urldata = response.data;
 
                 for(this.i = 0; this.i < store.state.urldata.length; this.i++) {
@@ -241,28 +251,8 @@ const app = new Vue({
             });
 
             axios.get('/get-date').then((response) => {
-                // this.date = response.data.updated_at;
                 store.state.date = response.data.updated_at;
-
-                // alert('___' + response.data.updated_at );
             });
-
-
-
-
-
         },
-
-        /*addDataToOrderModel: function () {
-            axios.post('/table', {
-                title: state.newTitle,
-                number: 0,
-                price: state.newPrice,
-            }).then((response) => {
-                console.log('add ' + response.data.title);
-            });
-        },*/
-
-
     }
 });
