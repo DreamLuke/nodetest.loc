@@ -146,42 +146,11 @@ const store = new Vuex.Store({
 
 
         updatePosition({state, dispatch, commit}, inputArr) {
-            alert('updatePosition ');
+            axios.put('/table-update/' + inputArr[2] +'/', {
 
-            /*axios.put('/table-update/' + arr[1] +'/', {
-                title: state.urldata[arr[0]].title,
-                number: state.urldata[arr[0]].number,
-                price: state.urldata[arr[0]].price,
-            }).then((response) => {
-                alert('updatePosition ' +arr[1]0;
-
-                axios.get('/get-date').then((response) => {
-                    store.state.date = response.data.updated_at;
-                    axios.get('/table').then((response) => {
-                        state.urldata = response.data;
-                        state.addStatus = true;
-                    });
-                });
-            });*/
-
-
-            /*state.newTitle = inputArr[0];
-            state.newPrice = inputArr[1];
-
-            if(state.newTitle == '') {
-                state.newTitle = 'Новая позиция';
-                // alert('Проверка 11111');
-            }
-            if(state.newPrice == '') {
-                state.newPrice = 0;
-            } else {
-                state.newPrice = parseFloat(inputArr[1]);
-            }
-
-            axios.post('/table', {
-                title: state.newTitle,
-                number: 0,
-                price: state.newPrice,
+                title: inputArr[0],
+                // number: state.urldata[arr[0]].number,
+                price: inputArr[1],
             }).then((response) => {
 
                 axios.get('/get-date').then((response) => {
@@ -189,16 +158,11 @@ const store = new Vuex.Store({
 
                     axios.get('/table').then((response) => {
                         state.urldata = response.data;
-                        alert('Позиция успешно сохранена!');
+                        alert('Редактирование произведено.');
                     });
                 });
-            });*/
+            });
         },
-
-
-
-
-
 
         remove({state, dispatch, commit}, arr) {
             // dispatch('reset', {amount: arr); не работает
@@ -222,10 +186,6 @@ const store = new Vuex.Store({
                 });
             });
         },
-
-
-
-
     },
     getters: {
     }

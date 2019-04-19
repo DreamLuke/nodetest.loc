@@ -92,7 +92,7 @@ class OrderController extends Controller
         $order = Order::find($id);
 
         $order->title = $request->title;
-        $order->number = $request->number;
+        // $order->number = $request->number;
         $order->price = $request->price;
         $order->save();
     }

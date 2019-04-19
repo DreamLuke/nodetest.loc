@@ -1791,20 +1791,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1813,28 +1799,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       success: ''
     };
   },
-  computed: {
-    /*newTitle() {
-        return this.$store.state.newTitle
-    },
-    newPrice() {
-        return this.$store.state.newPrice
-    },*/
-  },
+  computed: {},
   mounted: function mounted() {
     console.log('Component mounted. AddTableComponent.');
   },
   methods: {
-    /*addPosition: function ([newTitle, newPrice]) {
-        this.$store.dispatch('addPosition', [newTitle, newPrice]);
-         this.newTitle = '';
-        this.newPrice = '';
-    },*/
-
-    /*getData: function () {
-        this.$store.dispatch('getData');
-        // alert('getData');
-    },*/
     addPosition: function addPosition(_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
           newTitle = _ref2[0],
@@ -1844,13 +1813,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.$store.dispatch('addPosition', [newTitle, newPrice]);
       this.newTitle = '';
       this.newPrice = '';
-      /*axios.post('/table', {
-          title: 'ТАЙТЛ 88888',
-          number: 0,
-          price: 77764,
-      }).then((response) => {
-          console.log('add ' + response.data.title);
-      });*/
     }
   }
 });
@@ -1965,9 +1927,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -2138,14 +2097,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {//urldata: []
@@ -2221,25 +2172,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       newTitle: '',
       newPrice: '',
       success: '',
-      id: ''
+      id: this.$route.query.id
     };
   },
   computed: {},
-  params: {
-    id: 123
-  },
   mounted: function mounted() {
-    console.log('Component mounted. AddTableComponent.');
+    console.log('Component mounted. AddTableComponent.' + this.$route.query.id);
   },
   methods: {
     addPosition: function addPosition(_ref) {
@@ -2252,12 +2196,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.newPrice = '';
     },
     updatePosition: function updatePosition(_ref3) {
-      var _ref4 = _slicedToArray(_ref3, 2),
+      var _ref4 = _slicedToArray(_ref3, 3),
           newTitle = _ref4[0],
-          newPrice = _ref4[1];
+          newPrice = _ref4[1],
+          id = _ref4[2];
 
-      // alert('update');
-      this.$store.dispatch('updatePosition', [newTitle, newPrice]);
+      this.$store.dispatch('updatePosition', [newTitle, newPrice, id]);
       this.newTitle = '';
       this.newPrice = '';
     }
@@ -6743,6 +6687,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.row {\n    margin: 0;\n}\nh1 {\n    text-align: center;\n}\nul {\n    margin-left: 0;\n    padding-left: 0;\n}\nli {\n    list-style-type: none; /* Убираем маркеры */\n    padding-left: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.center-text {\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -37445,6 +37408,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TableComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UpdateTableRowComponent.vue?vue&type=style&index=0&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UpdateTableRowComponent.vue?vue&type=style&index=0&lang=css& ***!
@@ -38076,85 +38069,76 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-12" },
-        [
-          _c("label", { attrs: { for: "title" } }, [
-            _vm._v("Наименование позиции")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newTitle,
-                expression: "newTitle"
-              }
-            ],
-            attrs: {
-              type: "text",
-              name: "title",
-              id: "title",
-              placeholder: "Новая позиция"
-            },
-            domProps: { value: _vm.newTitle },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newTitle = $event.target.value
-              }
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("label", { attrs: { for: "title" } }, [
+          _vm._v("Наименование позиции")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newTitle,
+              expression: "newTitle"
             }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "price" } }, [_vm._v("Цена за штуку")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newPrice,
-                expression: "newPrice"
+          ],
+          attrs: {
+            type: "text",
+            name: "title",
+            id: "title",
+            placeholder: "Новая позиция"
+          },
+          domProps: { value: _vm.newTitle },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
               }
-            ],
-            attrs: {
-              type: "number",
-              name: "price",
-              min: "0",
-              id: "price",
-              step: "0.1",
-              placeholder: "Цена за штуку"
-            },
-            domProps: { value: _vm.newPrice },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newPrice = $event.target.value
-              }
+              _vm.newTitle = $event.target.value
             }
-          }),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: "/update-table-row" } }, [
-            _vm._v("Редактировать позицию")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "submit", value: "Добавить" },
-            on: {
-              click: function($event) {
-                return _vm.addPosition([_vm.newTitle, _vm.newPrice])
-              }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "price" } }, [_vm._v("Цена за штуку")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newPrice,
+              expression: "newPrice"
             }
-          })
-        ],
-        1
-      ),
+          ],
+          attrs: {
+            type: "number",
+            name: "price",
+            min: "0",
+            id: "price",
+            step: "0.1",
+            placeholder: "Цена за штуку"
+          },
+          domProps: { value: _vm.newPrice },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newPrice = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "submit", value: "Добавить" },
+          on: {
+            click: function($event) {
+              return _vm.addPosition([_vm.newTitle, _vm.newPrice])
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "success" }, [
         _vm._v("\n            " + _vm._s(_vm.success) + "\n        ")
@@ -38339,16 +38323,6 @@ var render = function() {
               ])
             ],
             1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c("router-link", { attrs: { to: "/update-table-row" } }, [
-                _vm._v("Редактировать позицию")
-              ])
-            ],
-            1
           )
         ]),
         _vm._v(" "),
@@ -38483,13 +38457,17 @@ var render = function() {
               return _c("tr", [
                 _c("th", [_vm._v(_vm._s(url.title))]),
                 _vm._v(" "),
-                _c("th", [_vm._v(_vm._s(url.number))]),
+                _c("th", { staticClass: "center-text" }, [
+                  _vm._v(_vm._s(url.number))
+                ]),
                 _vm._v(" "),
-                _c("th", [_vm._v(_vm._s(url.price))]),
+                _c("th", { staticClass: "center-text" }, [
+                  _vm._v(_vm._s(url.price))
+                ]),
                 _vm._v(" "),
-                _c("th", [_vm._v(_vm._s(url.number * url.price))]),
-                _vm._v(" "),
-                _c("th", [_vm._v(_vm._s(url.updated_at))]),
+                _c("th", { staticClass: "center-text" }, [
+                  _vm._v(_vm._s(url.number * url.price))
+                ]),
                 _vm._v(" "),
                 _c(
                   "th",
@@ -38536,6 +38514,7 @@ var render = function() {
                     _c(
                       "router-link",
                       {
+                        staticClass: "btn btn-default text mb-1",
                         attrs: {
                           to: {
                             path: "update-table-row",
@@ -38543,7 +38522,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Редактировать позицию " + _vm._s(url.id))]
+                      [_vm._v("Редактировать")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -38584,11 +38563,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Цена за единицу продукции")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Цена")]),
+        _c("th", [_vm._v("Общая цена")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Дата")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Действие")])
+        _c("th", { staticClass: "center-text" }, [_vm._v("Действие")])
       ])
     ])
   }
@@ -38678,19 +38655,16 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("input", {
-          attrs: { type: "submit", value: "Добавить" },
+          attrs: { type: "submit", value: "Сохранить изменения" },
           on: {
             click: function($event) {
-              return _vm.updatePosition([_vm.newTitle, _vm.newPrice])
+              return _vm.updatePosition([_vm.newTitle, _vm.newPrice, _vm.id])
             }
           }
         })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "success" }, [
-        _vm._v("\n            111_ " + _vm._s(_vm.id) + "\n        ")
       ])
-    ])
+    ]),
+    _vm._v("\n    Сохранение...\n")
   ])
 }
 var staticRenderFns = []
@@ -54682,46 +54656,19 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       var state = _ref5.state,
           dispatch = _ref5.dispatch,
           commit = _ref5.commit;
-      alert('updatePosition ');
-      /*axios.put('/table-update/' + arr[1] +'/', {
-          title: state.urldata[arr[0]].title,
-          number: state.urldata[arr[0]].number,
-          price: state.urldata[arr[0]].price,
-      }).then((response) => {
-          alert('updatePosition ' +arr[1]0;
-           axios.get('/get-date').then((response) => {
-              store.state.date = response.data.updated_at;
-              axios.get('/table').then((response) => {
-                  state.urldata = response.data;
-                  state.addStatus = true;
-              });
+      axios.put('/table-update/' + inputArr[2] + '/', {
+        title: inputArr[0],
+        // number: state.urldata[arr[0]].number,
+        price: inputArr[1]
+      }).then(function (response) {
+        axios.get('/get-date').then(function (response) {
+          store.state.date = response.data.updated_at;
+          axios.get('/table').then(function (response) {
+            state.urldata = response.data;
+            alert('Редактирование произведено.');
           });
-      });*/
-
-      /*state.newTitle = inputArr[0];
-      state.newPrice = inputArr[1];
-       if(state.newTitle == '') {
-          state.newTitle = 'Новая позиция';
-          // alert('Проверка 11111');
-      }
-      if(state.newPrice == '') {
-          state.newPrice = 0;
-      } else {
-          state.newPrice = parseFloat(inputArr[1]);
-      }
-       axios.post('/table', {
-          title: state.newTitle,
-          number: 0,
-          price: state.newPrice,
-      }).then((response) => {
-           axios.get('/get-date').then((response) => {
-              store.state.date = response.data.updated_at;
-               axios.get('/table').then((response) => {
-                  state.urldata = response.data;
-                  alert('Позиция успешно сохранена!');
-              });
-          });
-      });*/
+        });
+      });
     },
     remove: function remove(_ref6, arr) {
       var state = _ref6.state,
@@ -55363,7 +55310,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TableComponent_vue_vue_type_template_id_8554570c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=template&id=8554570c& */ "./resources/js/components/TableComponent.vue?vue&type=template&id=8554570c&");
 /* harmony import */ var _TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/TableComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -55371,7 +55320,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _TableComponent_vue_vue_type_template_id_8554570c___WEBPACK_IMPORTED_MODULE_0__["render"],
   _TableComponent_vue_vue_type_template_id_8554570c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -55400,6 +55349,22 @@ component.options.__file = "resources/js/components/TableComponent.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./TableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TableComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TableComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

@@ -9,14 +9,10 @@
                 <input type="number" name="price" min="0" id="price" step="0.1" placeholder="Цена за штуку" v-model="newPrice">
 
                 <!--<input type="submit" v-on:click="addPosition([newTitle, newPrice])" value="Добавить">-->
-                <input type="submit" v-on:click="updatePosition([newTitle, newPrice])" value="Добавить">
-
+                <input type="submit" v-on:click="updatePosition([newTitle, newPrice, id])" value="Сохранить изменения">
             </div>
-            <div class="success">
-                111_ {{id}}
-            </div>
-
         </div>
+        Сохранение...
     </div>
 </template>
 
@@ -27,16 +23,13 @@
                 newTitle: '',
                 newPrice: '',
                 success: '',
-                id: '',
+                id: this.$route.query.id,
             }
         },
         computed: {
         },
-        params: {
-            id: 123,
-        },
         mounted() {
-            console.log('Component mounted. AddTableComponent.');
+            console.log('Component mounted. AddTableComponent.' +this.$route.query.id);
         },
         methods: {
             addPosition: function ([newTitle, newPrice]) {
@@ -46,10 +39,8 @@
                 this.newPrice = '';
             },
 
-            updatePosition: function ([newTitle, newPrice]) {
-                // alert('update');
-
-                this.$store.dispatch('updatePosition', [newTitle, newPrice]);
+            updatePosition: function ([newTitle, newPrice, id]) {
+                this.$store.dispatch('updatePosition', [newTitle, newPrice, id]);
 
                 this.newTitle = '';
                 this.newPrice = '';

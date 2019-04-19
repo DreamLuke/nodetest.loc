@@ -15,9 +15,6 @@
                     <li>
                         <router-link to="/add-table-row">Добавить позицию</router-link>
                     </li>
-                    <li>
-                        <router-link to="/update-table-row">Редактировать позицию</router-link>
-                    </li>
                 </ul>
                 <div class="col-md-10">
                     <!--<router-view title="Главная страница сайта" v-bind:urldata="urldata" @addPosition="addPositionToArray"></router-view>-->

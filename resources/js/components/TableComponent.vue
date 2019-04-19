@@ -9,29 +9,21 @@
                             <th>Наименование</th>
                             <th>Количество</th>
                             <th>Цена за единицу продукции</th>
-                            <th>Цена</th>
-                            <th>Дата</th>
-                            <th>Действие</th>
+                            <th>Общая цена</th>
+                            <th class="center-text">Действие</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(url, index) in urldata">
                             <th>{{ url.title }}</th>
-                            <th>{{ url.number }}</th>
-                            <th>{{ url.price }}</th>
-                            <th>{{ url.number*url.price }}</th>
-                            <th>{{ url.updated_at }}</th>
+                            <th class="center-text">{{ url.number }}</th>
+                            <th class="center-text">{{ url.price }}</th>
+                            <th class="center-text">{{ url.number*url.price }}</th>
                             <th>
-                                <!--<button v-on:click="add(url)" class="btn btn-default text mb-1">+</button>-->
                                 <button v-on:click="add(index, url.id)" class="btn btn-default text mb-1">+</button>
                                 <button v-on:click="subtract(index, url.id)" class="btn btn-default text mb-1">-</button>
                                 <button v-on:click="reset(index, url.id)" class="btn btn-default text mb-1">x</button>
-
-                                <!--<router-link to="/update-table-row/">Редактировать позицию {{ url.id }}</router-link>-->
-                                <!--<router-link to="{path: '/update-table-row', query: {id: 1}">Редактировать позицию {{ url.id }}</router-link>-->
-                                <!--<router-link :to="{path: 'update-table-row', params: {id: '{{ url.id}}'}}">Редактировать позицию {{ url.id }}</router-link>-->
-                                <router-link :to="{path: 'update-table-row', query: { id: url.id }}">Редактировать позицию {{ url.id }}</router-link>
-
+                                <router-link :to="{path: 'update-table-row', query: { id: url.id }}" class="btn btn-default text mb-1">Редактировать</router-link>
                                 <button v-on:click="remove(index, url.id)" class="btn btn-default text mb-1">Удалить</button>
                             </th>
                         </tr>
@@ -92,3 +84,9 @@
         }
     }
 </script>
+
+<style>
+    .center-text {
+        text-align: center;
+    }
+</style>
