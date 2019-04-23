@@ -26,6 +26,8 @@
                             <th class="center-text">{{ url.number*url.price }}</th>
                             <th>
                                 <button v-on:click="add(index, url.id)" class="btn btn-default text mb-1">+</button>
+                                <button v-on:click="subtract(index, url.id)" class="btn btn-default text mb-1">-</button>
+                                <button v-on:click="reset(index, url.id)" class="btn btn-default text mb-1">x</button>
                             </th>
                         </tr>
                         </tbody>
@@ -60,6 +62,12 @@ export default {
   methods: {
     add: function (index, id) {
       this.$store.dispatch('add', [index, id])
+    },
+    subtract: function (index, id) {
+      this.$store.dispatch('subtract', [index, id])
+    },
+    reset: function (index, id) {
+      this.$store.dispatch('reset', [index, id])
     }
   }
 }
