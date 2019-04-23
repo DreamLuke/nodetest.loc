@@ -36,13 +36,7 @@ module.exports = function (ctx) {
     devServer: {
       // https: true,
       // port: 8080,
-      open: true, // opens browser window automatically
-      proxy: {
-      	'/' : {
-      		target: 'http://nodetest.loc/',
-      		changeOrigin: true,
-      	}
-      }
+      open: true // opens browser window automatically
     },
     // framework: 'all' --- includes everything; for dev only!
     framework: {
@@ -60,8 +54,7 @@ module.exports = function (ctx) {
         'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide',
-        'QInput'
+        'QItemSide'
       ],
       directives: [
         'Ripple'

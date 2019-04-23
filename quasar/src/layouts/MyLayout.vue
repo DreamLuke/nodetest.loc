@@ -57,6 +57,21 @@
     </q-layout-drawer>
 
     <q-page-container>
+      <q-toolbar
+      >
+        <ul>
+          <li>
+            <router-link to="/" class="white-text">Главная страница</router-link>
+          </li>
+          <li>
+            <router-link to="/table" class="white-text">Таблица</router-link>
+          </li>
+          <li>
+            <router-link to="/add-table-row" class="white-text">Добавить позицию</router-link>
+          </li>
+        </ul>
+      </q-toolbar>
+
       <router-view />
     </q-page-container>
   </q-layout>
@@ -72,6 +87,11 @@ export default {
       leftDrawerOpen: this.$q.platform.is.desktop
     }
   },
+  props: ['header'],
+  mounted () {
+    // alert('asdfasdfasdf');
+    // console.log('Quasar component mounted.');
+  },
   methods: {
     openURL
   }
@@ -79,4 +99,23 @@ export default {
 </script>
 
 <style>
+  .row {
+    margin: 0;
+  }
+  .white-text {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  h1 {
+    text-align: center;
+  }
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+    color: #ffffff;
+  }
+  li {
+    list-style-type: none; /* Убираем маркеры */
+    padding-left: 10px;
+  }
 </style>

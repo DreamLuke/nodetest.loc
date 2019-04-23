@@ -12,8 +12,20 @@ Vue.use(Vuex)
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
+    state: {
+      header: 'Мой сайт по изучению Quasar',
+      title: 'Главная страница',
+      balance: 75,
+      urldata: [ { 'title': 'ТАЙТЛ', 'number': 2, 'price': 10 }, { 'title': 'ТАЙТЛ 2', 'number': 4, 'price': 20 } ]
+    },
     modules: {
       example
+    },
+    actions: {
+      add ({ state, dispatch, commit }, arr) {
+        alert('alert')
+        // state.balance = 1000
+      }
     }
   })
 

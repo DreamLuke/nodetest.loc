@@ -15,7 +15,6 @@
     </head>
     <body>
     <div id="app">
-        <layout header="Мой сайт по изучению Vue.js"></layout>
     </div>
     </body>
 </html>
