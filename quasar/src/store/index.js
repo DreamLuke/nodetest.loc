@@ -56,6 +56,18 @@ export default function (/* { ssrContext } */) {
           state.balance += state.urldata[arr[0]].price
           state.urldata[arr[0]].number--
         }
+      },
+      addPosition ({ state, dispatch, commit }, inputArr) {
+        if (inputArr[0] === '') {
+          inputArr[0] = 'Новая позиция'
+        }
+        if (inputArr[1] === '') {
+          inputArr[1] = 0
+        } else {
+          inputArr[1] = parseFloat(inputArr[1])
+        }
+        state.urldata.push({ 'title': inputArr[0], 'number': 0, 'price': inputArr[1] })
+        // alert('sfasfasdf')
       }
     }
   })

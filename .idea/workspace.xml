@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31002426-49ed-46a9-be17-89daeb474e54" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/quasar/src/pages/TableQuasar.vue" afterPath="$PROJECT_DIR$/quasar/src/pages/TableQuasar.vue" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/quasar/src/pages/AddTableRowQuasar.vue" afterPath="$PROJECT_DIR$/quasar/src/pages/AddTableRowQuasar.vue" />
       <change beforePath="$PROJECT_DIR$/quasar/src/store/index.js" afterPath="$PROJECT_DIR$/quasar/src/store/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +21,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="95" column="13" lean-forward="true" selection-start-line="92" selection-start-column="12" selection-end-line="95" selection-end-column="13" />
+            <state relative-caret-position="731">
+              <caret line="124" column="13" lean-forward="true" selection-start-line="116" selection-start-column="12" selection-end-line="124" selection-end-column="13" />
               <folding>
                 <element signature="e#358#380#0" expanded="true" />
               </folding>
@@ -49,6 +50,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AddTableRowComponent.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/AddTableRowComponent.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="515">
+              <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quasar/src/router/routes.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -62,8 +73,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quasar/src/store/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="685">
-              <caret line="55" column="10" lean-forward="false" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
+            <state relative-caret-position="770">
+              <caret line="68" column="84" lean-forward="false" selection-start-line="68" selection-start-column="84" selection-end-line="68" selection-end-column="84" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -94,11 +105,21 @@
       <file leaf-file-name="TableQuasar.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quasar/src/pages/TableQuasar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="69" column="33" lean-forward="false" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+            <state relative-caret-position="566">
+              <caret line="64" column="6" lean-forward="true" selection-start-line="61" selection-start-column="2" selection-end-line="64" selection-end-column="6" />
               <folding>
                 <marker date="1556020718720" expanded="true" signature="816:1623" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddTableRowQuasar.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quasar/src/pages/AddTableRowQuasar.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -164,6 +185,7 @@
         <option value="$PROJECT_DIR$/quasar/src/layouts/MyLayout.vue" />
         <option value="$PROJECT_DIR$/quasar/src/pages/Index.vue" />
         <option value="$PROJECT_DIR$/quasar/src/pages/TableQuasar.vue" />
+        <option value="$PROJECT_DIR$/quasar/src/pages/AddTableRowQuasar.vue" />
         <option value="$PROJECT_DIR$/quasar/src/store/index.js" />
       </list>
     </option>
@@ -306,13 +328,6 @@
             <path>
               <item name="nodetest.loc" type="b2602c69:ProjectViewProjectNode" />
               <item name="nodetest.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="quasar" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="pages" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="nodetest.loc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodetest.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -403,12 +418,12 @@
       <workItem from="1555686487686" duration="4719000" />
       <workItem from="1555908594234" duration="17000" />
       <workItem from="1555908628245" duration="1394000" />
-      <workItem from="1556006816570" duration="13663000" />
+      <workItem from="1556006816570" duration="15298000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156993000" />
+    <option name="totallyTimeSpent" value="158628000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -721,14 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/AddTableRowComponent.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -784,37 +791,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quasar/src/pages/AddTableRowQuasar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/TableComponent.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="566">
           <caret line="67" column="57" lean-forward="true" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="57" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Layout.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="60" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="95" column="13" lean-forward="true" selection-start-line="92" selection-start-column="12" selection-end-line="95" selection-end-column="13" />
-          <folding>
-            <element signature="e#358#380#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -836,18 +817,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quasar/src/pages/TableQuasar.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="69" column="33" lean-forward="false" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+        <state relative-caret-position="566">
+          <caret line="64" column="6" lean-forward="true" selection-start-line="61" selection-start-column="2" selection-end-line="64" selection-end-column="6" />
           <folding>
             <marker date="1556020718720" expanded="true" signature="816:1623" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/AddTableRowComponent.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Layout.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="60" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="124" column="13" lean-forward="true" selection-start-line="116" selection-start-column="12" selection-end-line="124" selection-end-column="13" />
+          <folding>
+            <element signature="e#358#380#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quasar/src/pages/AddTableRowQuasar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/quasar/src/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="685">
-          <caret line="55" column="10" lean-forward="false" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
+        <state relative-caret-position="770">
+          <caret line="68" column="84" lean-forward="false" selection-start-line="68" selection-start-column="84" selection-end-line="68" selection-end-column="84" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

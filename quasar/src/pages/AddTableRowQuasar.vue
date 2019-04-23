@@ -27,6 +27,8 @@ export default {
   name: 'PageIndex',
   data: function () {
     return {
+      newTitle: '',
+      newPrice: ''
     }
   },
   computed: {
@@ -35,6 +37,13 @@ export default {
     },
     balance () {
       return this.$store.state.balance
+    }
+  },
+  methods: {
+    addPosition: function ([newTitle, newPrice]) {
+      this.$store.dispatch('addPosition', [newTitle, newPrice])
+      this.newTitle = ''
+      this.newPrice = ''
     }
   }
 }
